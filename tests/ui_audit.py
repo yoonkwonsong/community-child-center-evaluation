@@ -33,13 +33,13 @@ res = []
 def ok(name, cond, detail=''):
     res.append((name, bool(cond), detail)); print(('PASS ' if cond else 'FAIL ') + name + ((' :: ' + str(detail)) if (detail and not cond) else ''))
 errs = []
-def page(b, cfg, w=1360, h=900, scheme='light'):
+def page(b, cfg, w=1360, h=900, scheme='light', hash=''):
     ctx = b.new_context(viewport={'width': w, 'height': h}, color_scheme=scheme)
     pg = ctx.new_page()
     pg.on('console', lambda m: errs.append(m.text) if m.type == 'error' and 'ERR_' not in m.text and 'fonts.g' not in m.text and 'Failed to load resource' not in m.text else None)
     pg.on('pageerror', lambda e: errs.append('PAGEERROR ' + str(e)))
     if cfg is not None: pg.add_init_script('window.__cfg = ' + json.dumps(cfg) + ';' + MOCK)
-    pg.goto(out.as_uri()); pg.wait_for_timeout(300)
+    pg.goto(out.as_uri() + hash); pg.wait_for_timeout(300)
     return pg
 def calls(pg, kind=None):
     c = pg.evaluate('window.__calls'); return [x for x in c if (kind is None or x[0] == kind)]
@@ -170,6 +170,29 @@ with sync_playwright() as p:
     ok('G10 format column: 13 strict, 21 standard, 7 format-free, 6 actions; every row has a label and a reason; searchable',
        [fm[k] for k in ['strict', 'standard', 'free', 'na']] == [13, 21, 7, 6] and all(fm[k] == fm[k + '_pills'] == fm[k + '_notes'] for k in ['strict', 'standard', 'free', 'na']) and fm['na_are_actions'] == 6 and fm['search'] == 7, fm)
     ok('G7 six actions, and action buttons are marked on the scorecard', n_act == 6 and pg.locator('#count-label').inner_text().endswith('41 documents, 6 actions') and pg.locator('.docbtn.act').count() >= 6 and pg.locator('#scorebar').count() == 0, (n_act, pg.locator('#count-label').inner_text(), pg.locator('.docbtn.act').count()))
+    # R: recommended-form pages
+    pg.click('#clear'); pg.select_option('#cols', 'all')
+    names = pg.evaluate("Array.prototype.map.call(document.querySelectorAll('#rows [data-form]'), function (b) { return b.dataset.form; })")
+    bad = []
+    for name in names:
+        pg.locator('#rows [data-form="%s"]' % name).click(); pg.wait_for_timeout(40)
+        if not (pg.locator('#view-form').is_visible() and not pg.locator('#view-docs').is_visible() and pg.locator('#form-title').inner_text().startswith(name) and pg.locator('#form-body .sheet').count() >= 1 and pg.get_attribute('#tab-docs', 'aria-pressed') == 'true'): bad.append(name)
+        pg.locator('.form-back').first.click(); pg.wait_for_timeout(20)
+        if not pg.locator('#view-docs').is_visible(): bad.append('back:' + name)
+    ok('R1 25 documents have a form badge; each opens its own page with at least one sheet and returns', len(names) == 25 and bad == [], (len(names), bad))
+    plain = pg.evaluate("Array.prototype.filter.call(document.querySelectorAll('#rows tr'), function (tr) { var d = tr.querySelector('.doc-ko').textContent; return ['운영일지', '응급처치 및 귀가 동의서', '종사자 회의록', '시설장 면담'].indexOf(d) !== -1 && tr.querySelector('[data-form]'); }).length")
+    ok('R2 documents with no sample form keep a plain label', plain == 0, plain)
+    pg.locator('.table-wrap').scroll_into_view_if_needed()
+    pg.evaluate("document.querySelector('.table-wrap').scrollTop = 1500"); pg.wait_for_timeout(50)
+    target = pg.evaluate("(function () { var w = document.querySelector('.table-wrap').getBoundingClientRect(); var bs = document.querySelectorAll('#rows [data-form]'); for (var i = 0; i < bs.length; i++) { var r = bs[i].getBoundingClientRect(); if (r.top > w.top + 40 && r.bottom < w.bottom) return bs[i].dataset.form; } return null; })()")
+    y0 = pg.evaluate('window.scrollY')
+    pg.locator('#rows [data-form="%s"]' % target).click(); pg.wait_for_timeout(60)
+    pg.keyboard.press('Escape'); pg.wait_for_timeout(60)
+    st = pg.evaluate("document.querySelector('.table-wrap').scrollTop"); y1 = pg.evaluate('window.scrollY')
+    foc = pg.evaluate("document.activeElement && document.activeElement.dataset ? document.activeElement.dataset.form : null")
+    ok('R3 Escape returns to the same spot in the table with focus on the badge', bool(target) and abs(st - 1500) <= 2 and abs(y1 - y0) <= 2 and foc == target, (target, st, y0, y1, foc))
+    pg.fill('#q', 'sample form'); n_sf = pg.locator('#rows tr').count(); pg.fill('#q', '')
+    ok('R4 searching "sample form" lists the documents that have one', n_sf == 25, n_sf)
     pg.click('#clear'); pg.select_option('#cols', 'all')
     wrap = pg.locator('.table-wrap'); wrap.scroll_into_view_if_needed()
     pg.evaluate("document.querySelector('.table-wrap').scrollTop = 2500")
@@ -226,6 +249,13 @@ with sync_playwright() as p:
     pg.screenshot(path='a-prio.png')
     pg.close()
     pg = page(b, {'nodb': True}); pg.click('#tab-prio'); pg.select_option('#cur-year', '2'); pg.screenshot(path='a-prio-blank.png'); pg.close()
+    # R5: direct link and phone layout of a wide form
+    import urllib.parse
+    for scheme in ['light', 'dark']:
+        pg = page(b, {'nodb': True}, w=390, h=844, scheme=scheme, hash='#form=' + urllib.parse.quote('월간사업계획서'))
+        vis = pg.locator('#view-form').is_visible(); sw = pg.evaluate('document.documentElement.scrollWidth'); inner = pg.evaluate("Math.max.apply(null, Array.prototype.map.call(document.querySelectorAll('#form-body .fx'), function (e) { return e.scrollWidth - e.clientWidth; }))")
+        ok('R5 phone %s: a direct link opens the form; wide tables scroll inside the sheet, not the page' % scheme, vis and sw <= 390 and inner > 0, (vis, sw, inner))
+        pg.close()
     # H: phone, both views, both themes
     for scheme in ['light', 'dark']:
         pg = page(b, {'nodb': True}, 400, 800, scheme)
