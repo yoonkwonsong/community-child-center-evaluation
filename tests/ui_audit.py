@@ -132,8 +132,8 @@ with sync_playwright() as p:
     dup = pg.evaluate("(function () { var s = {}, d = []; Array.prototype.forEach.call(document.querySelectorAll('[id]'), function (e) { if (s[e.id]) d.push(e.id); s[e.id] = 1; }); return d; })()")
     ok('F11 every control has an accessible name; no duplicate ids', nolabel == 0 and dup == [], (nolabel, dup[:5]))
     # G: documents view
-    pg.click('#tab-docs'); dflt = pg.input_value('#cols'); allvis = all(pg.locator('#head-row th').nth(i).is_visible() for i in range(16)); pg.click('#tab-score')
-    ok('G0 documents view opens with all 16 columns, description and fields included', dflt == 'all' and allvis and pg.locator('#head-row th').count() == 16, (dflt, allvis))
+    pg.click('#tab-docs'); dflt = pg.input_value('#cols'); allvis = all(pg.locator('#head-row th').nth(i).is_visible() for i in range(17)); pg.click('#tab-score')
+    ok('G0 documents view opens with all 17 columns, description and fields included', dflt == 'all' and allvis and pg.locator('#head-row th').count() == 17, (dflt, allvis))
     pg.locator('.docbtn[data-doc="운영규정"]').first.click(); pg.wait_for_timeout(150)
     ok('G1 document button shows exactly that document', pg.locator('#view-docs').is_visible() and pg.locator('#rows tr').count() == 1 and pg.locator('#rows .doc-ko').inner_text() == '운영규정' and pg.locator('#only-banner').is_visible())
     pg.fill('#q', '상담'); pg.wait_for_timeout(100)
@@ -142,7 +142,7 @@ with sync_playwright() as p:
     total_rows = pg.locator('#rows tr').count()
     ok('G3 clear shows all 47 documents', total_rows == 47 and pg.inner_text('#count') == '47', total_rows)
     bad = []
-    for key in ['area', 'doc', 'type', 'ind', 'pts', 'fix', 'gate', 'sco', 'by', 'per', 'freq', 'fmt', 'act', 'where', 'req']:
+    for key in ['area', 'doc', 'type', 'form', 'ind', 'pts', 'fix', 'gate', 'sco', 'by', 'per', 'freq', 'fmt', 'act', 'where', 'req']:
         for _ in range(2):
             pg.click('.th-btn[data-key="%s"]' % key)
             if pg.locator('#rows tr').count() != 47: bad.append(key)
@@ -152,15 +152,23 @@ with sync_playwright() as p:
     first = pg.locator('#rows tr').first.locator('.pts').inner_text(); last = pg.locator('#rows tr').last.locator('.pts').inner_text()
     ok('G5 points sort keeps unscored rows last', last.strip() == '—', (first, last))
     counts = {}
-    for sel in ['#f-area', '#f-type', '#f-fix', '#f-gate', '#f-sco', '#f-by', '#f-per', '#f-freq', '#f-fmt', '#f-act', '#f-req']:
+    for sel in ['#f-area', '#f-type', '#f-form', '#f-fix', '#f-gate', '#f-sco', '#f-by', '#f-per', '#f-freq', '#f-fmt', '#f-act', '#f-req']:
         vals = pg.evaluate("Array.prototype.map.call(document.querySelector('%s').options, function (o) { return o.value; })" % sel)
         tot = 0
         for v in vals[1:]:
             pg.select_option(sel, v); n = pg.locator('#rows tr').count(); tot += n
             if n == 0: counts[sel + ':' + v] = 0
         pg.select_option(sel, 'all'); counts[sel] = tot
-    ok('G6 filters partition the list (area, type, freq, format, fields each sum to 47)', counts.get('#f-area') == 47 and counts.get('#f-type') == 47 and counts.get('#f-fix') == 47 and counts.get('#f-gate') == 47 and counts.get('#f-sco') == 47 and counts.get('#f-by') == 47 and counts.get('#f-per') == 47 and counts.get('#f-freq') == 47 and counts.get('#f-fmt') == 47 and counts.get('#f-req') == 47 and not [k for k in counts if ':' in k], counts)
+    ok('G6 filters partition the list (area, type, freq, format, fields each sum to 47)', counts.get('#f-area') == 47 and counts.get('#f-type') == 47 and counts.get('#f-form') == 47 and counts.get('#f-fix') == 47 and counts.get('#f-gate') == 47 and counts.get('#f-sco') == 47 and counts.get('#f-by') == 47 and counts.get('#f-per') == 47 and counts.get('#f-freq') == 47 and counts.get('#f-fmt') == 47 and counts.get('#f-req') == 47 and not [k for k in counts if ':' in k], counts)
     pg.select_option('#f-type', 'action'); n_act = pg.locator('#rows tr').count(); pg.select_option('#f-type', 'all')
+    fm = {}
+    for v in ['strict', 'standard', 'free', 'na']:
+        pg.select_option('#f-form', v); fm[v] = pg.locator('#rows tr').count()
+        fm[v + '_pills'] = pg.locator('#rows td.form .pill.fm-' + v).count(); fm[v + '_notes'] = pg.locator('#rows td.form .fm-note').count()
+    pg.select_option('#f-form', 'na'); fm['na_are_actions'] = pg.locator('#rows .pill', has_text='Action').count()
+    pg.select_option('#f-form', 'all'); pg.fill('#q', 'format-free'); fm['search'] = pg.locator('#rows tr').count(); pg.fill('#q', '')
+    ok('G10 format column: 13 strict, 21 standard, 7 format-free, 6 actions; every row has a label and a reason; searchable',
+       [fm[k] for k in ['strict', 'standard', 'free', 'na']] == [13, 21, 7, 6] and all(fm[k] == fm[k + '_pills'] == fm[k + '_notes'] for k in ['strict', 'standard', 'free', 'na']) and fm['na_are_actions'] == 6 and fm['search'] == 7, fm)
     ok('G7 six actions, and action buttons are marked on the scorecard', n_act == 6 and pg.locator('#count-label').inner_text().endswith('41 documents, 6 actions') and pg.locator('.docbtn.act').count() >= 6 and pg.locator('#scorebar').count() == 0, (n_act, pg.locator('#count-label').inner_text(), pg.locator('.docbtn.act').count()))
     pg.click('#clear'); pg.select_option('#cols', 'all')
     wrap = pg.locator('.table-wrap'); wrap.scroll_into_view_if_needed()

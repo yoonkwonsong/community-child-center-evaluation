@@ -129,7 +129,7 @@ input:disabled, select:disabled { cursor: not-allowed; opacity: 0.6; }
 .status { font-size: 14px; }
 .table-wrap { overflow: auto; max-height: max(420px, calc(100vh - 90px)); overscroll-behavior: contain; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
 table { border-collapse: collapse; width: 100%; font-size: 14px; }
-table[data-cols="pri"] { min-width: 2100px; } table[data-cols="fil"] { min-width: 1750px; } table[data-cols="con"] { min-width: 1000px; } table[data-cols="all"] { min-width: 2600px; }
+table[data-cols="pri"] { min-width: 2280px; } table[data-cols="fil"] { min-width: 1930px; } table[data-cols="con"] { min-width: 1180px; } table[data-cols="all"] { min-width: 2780px; }
 table[data-cols="pri"] th:not(.s-pri), table[data-cols="pri"] td:not(.s-pri), table[data-cols="fil"] th:not(.s-fil), table[data-cols="fil"] td:not(.s-fil), table[data-cols="con"] th:not(.s-con), table[data-cols="con"] td:not(.s-con) { display: none; }
 .prio-view { display: flex; flex-direction: column; gap: 18px; }
 .prio-head { display: flex; flex-wrap: wrap; gap: 16px 32px; align-items: flex-start; justify-content: space-between; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; padding: 18px; }
@@ -161,7 +161,12 @@ th[aria-sort="ascending"] .arrow, th[aria-sort="descending"] .arrow { color: var
 .pill.either { border-style: dashed; }
 .pill.both { background: var(--accent-tint); border-style: dashed; border-color: var(--accent); }
 .pill.none { border-color: var(--line); color: var(--muted); }
+.pill.fm-strict { background: var(--accent-tint); border-color: var(--accent); font-weight: 600; }
+.pill.fm-free { border-style: dashed; }
+.pill.fm-na { border-color: var(--line); color: var(--muted); }
+.fm-note { display: block; margin-top: 4px; font-size: 12px; color: var(--muted); word-break: keep-all; }
 td.doc { min-width: 200px; }
+td.form { min-width: 170px; max-width: 26ch; }
 td.what { min-width: 260px; max-width: 46ch; }
 td.where { min-width: 150px; max-width: 26ch; }
 td.freq { min-width: 140px; max-width: 24ch; }
@@ -271,6 +276,10 @@ td.req { min-width: 320px; max-width: 54ch; }
         </select>
       </div>
       <div class="field">
+        <label for="f-form">Format</label>
+        <select id="f-form"></select>
+      </div>
+      <div class="field">
         <label for="f-fix">Fix window</label>
         <select id="f-fix"></select>
       </div>
@@ -353,6 +362,7 @@ td.req { min-width: 320px; max-width: 54ch; }
     <p><strong>Sharing.</strong> This page holds one center's checklist. Everyone who can open it with Contributor access or higher sees and edits the same marks. Another center needs its own copy of the page.</p>
     <p><strong>Priority view.</strong> It sorts every item that is not at full marks into four groups. "Do on time" holds records for years that are still open. "Fix now" holds yes-or-no items checked as they stand on the day. "Raise quality" holds graded items. "Cannot be fixed" holds past years and penalties. The number beside an item is what the score gains if that item alone reaches full marks; where it says 0, the item only earns points together with others in the same indicator. Do not backdate records: the handbook penalises false entries.</p>
     <p><strong>Document groupings.</strong> Fix window: "Fixable now" is checked as it stands on the day; "Time-bound" must be produced during the year or period it covers. 필수 조건: its absence zeroes a year or a whole indicator. Scoring: "Yes or no" earns full marks for existing; "Graded" is rated on completeness or detail. Checked by: 현장평가 (64 points), the 시·군·구's 지도점검 (30) or the survey (6). Copies: how many you need, which drives the workload.</p>
+    <p><strong>Format.</strong> "Strict" means the form is fixed for you: a statutory or official form, a 희망이음 or evaluation-system screen, or a paper someone else issues (a 시·군·구 notice, a certificate, a receipt). Use it as given and leave no field blank. "Standard" means the 운영 매뉴얼 has a sample form or the 평가편람 names items that must appear; your own layout is fine as long as those items are there. "Format-free" means any record that shows it happened counts, such as minutes, a memo or photos. The short note under each label says why. This grouping is a reading of the handbook and manual, not an official category, so ask your 시도지원단 if your 시·군·구 issues its own forms.</p>
     <p><strong>Documents and actions.</strong> A document is something you write, keep or submit. An action is something you do or keep in place, such as locked storage for child files or the director interview, with nothing to write. "Scored criteria" are items the 평가편람 checks. "희망이음 form" and "Manual example form" are fields from templates in the 시도지원단 운영 매뉴얼 (2024-based), which centers may adapt. Frequencies are the minimums that earn points; your 시·군·구 may ask for more. The 6기 cycle from 2027 may change the indicators.</p>
     <p>Sources: <a href="https://ncrc.or.kr/upload/ncrc/2026%EB%85%84%20%EC%A7%80%EC%97%AD%EC%95%84%EB%8F%99%EC%84%BC%ED%84%B0%20%ED%8F%89%EA%B0%80%EC%82%AC%EC%97%85%20%EC%95%88%EB%82%B4.pdf">2026년 지역아동센터 평가사업 안내</a> · <a href="http://www.icarejb.or.kr/main/filedown.php?menu=59&amp;no=979">지역아동센터 운영 매뉴얼</a> · <a href="https://www.mohw.go.kr/kor/download/07/005.pdf">2023년 지역아동센터 지원사업 안내</a></p>
   </footer>
@@ -559,7 +569,7 @@ td.req { min-width: 320px; max-width: 54ch; }
   var FREQ = [['daily','Daily or ongoing'],['event','Each session or event'],['monthly','Monthly'],['quarterly','Quarterly or more'],['half','Twice a year'],['yearly','Yearly'],['once','Once (per child, person, or program)'],['current','Keep current']];
   var FMT = [['online','Online'],['offline','Offline'],['either','Either'],['both','Both'],['none','No document']];
   var ACT = [['keep','Keep at center'],['submit','Submit'],['post','Post publicly'],['none','Nothing to file']];
-  var SORTS = [['area','Area'],['doc','Name'],['type','Type'],['ind','Indicator'],['pts','Points'],['fix','Fix window'],['gate','필수 조건'],['sco','Scoring'],['by','Checked by'],['per','Copies'],['freq','How often'],['fmt','Online or offline'],['act','Keep or submit'],['where','Where'],['req','Required fields']];
+  var SORTS = [['area','Area'],['doc','Name'],['type','Type'],['form','Format'],['ind','Indicator'],['pts','Points'],['fix','Fix window'],['gate','필수 조건'],['sco','Scoring'],['by','Checked by'],['per','Copies'],['freq','How often'],['fmt','Online or offline'],['act','Keep or submit'],['where','Where'],['req','Required fields']];
   var HI = '희망이음';
   var CF = 'Center file or ' + HI;
   var CH = "Child's file or " + HI;
@@ -570,6 +580,31 @@ td.req { min-width: 320px; max-width: 54ch; }
   var PER = [['center','One per center'],['child','One per child'],['staff','One per staff member'],['program','One per program or session']];
   var SCO = [['yn','Yes or no'],['graded','Graded'],['deduct','Deduction only'],['none','Not scored']];
   var BYL = [['현장평가','현장평가'],['지도점검','지도점검'],['설문조사','설문조사'],['none','Not scored']];
+  var FORM = [['strict','Strict'],['standard','Standard'],['free','Format-free'],['na','Not a document']];
+  /* name: [format, why]; actions are 'na' */
+  var FORMMAP = {
+    '운영규정': ['standard','Your own wording; the five scored items must appear'], '아동학대 금지 서약서': ['standard','Manual sample; one signed copy per person'],
+    '아동권리교육 계획서·일지·평가서': ['free','Any record showing the class took place'], '의견수렴함 접수대장·처리 보고서': ['standard','Manual sample ledger and report'],
+    '이의신청 절차 안내문': ['standard','Manual sample notice; match your 운영규정'], '아동자치회 회의록': ['standard','Manual sample minutes, with both signatures'],
+    '아동 의견 반영 기록': ['free','Any record: staff minutes, yearly plan or rules'], '개인정보보호 규정': ['standard','Your own wording; the four scored items must appear'],
+    '희망이음 권한 제한 규정': ['standard','One required clause, in your own words'], '개인정보 활용동의서': ['standard','Your own form; it must list the four uses'],
+    '프로그램 계획서': ['standard','Manual sample; the scored items must appear'], '프로그램 일지': ['standard','Manual sample; photos and a 법정종사자 sign-off'],
+    '프로그램 평가서': ['standard','Manual sample; goals met and changes for next year'], '의견 수렴 기록': ['free','Any record: minutes or advice notes'],
+    '아동 참여 기록': ['free','Any evidence children helped plan or evaluate'], '지역사회 공유 자료': ['free','Any medium: website post, flyer or event'],
+    '돌봄서비스 결정통지서': ['strict','Issued by the 시·군·구; keep the original'], '응급처치 및 귀가 동의서': ['strict','Official form (법정 서식); no blank fields'],
+    '아동카드': ['strict','희망이음 form; print it for the file'], '서비스 지원기록': ['standard','Manual sample; the three scored items'],
+    '관찰일지': ['standard','희망이음 screen or paper; the five topics'], '아동상담일지': ['standard','희망이음 screen or a paper log with its fields'],
+    '보호자 상담일지': ['standard','희망이음 screen or a paper log with its fields'], '연간사업계획서': ['standard','Manual sample; the scored items must appear'],
+    '월간사업계획서': ['standard','Plan format, not a timetable; manual sample'], '운영위원회 회의록': ['standard','Manual sample, plus sign-in sheet and photo'],
+    '운영위원회 승인 공문': ['strict','Official letter issued by the 지자체'], '종사자 회의록': ['free','Any minutes format'],
+    '운영일지': ['free','No template; attendance and work done'], '안전관리계획서': ['standard','Manual sample; all four parts'],
+    '비상연락망': ['standard','Manual sample; children and agency lists'], '의무교육 이수증': ['strict','Certificates issued by the training provider'],
+    '종사자 임면보고': ['strict','Filed in 희망이음 screens'], '보조금 청구·정산보고': ['strict','Filed in 희망이음 screens'],
+    '보조금 통장·증빙서류': ['strict','결의서 printed from 희망이음; original receipts'], '예산서': ['strict','재무·회계 규칙 forms, filed in 희망이음'],
+    '결산서': ['strict','재무·회계 규칙 forms, filed in 희망이음'], '후원금 영수증·발급대장': ['strict','Statutory 기부금영수증 form'],
+    '후원금 수입·사용 결과보고': ['strict','재무·회계 규칙 form, filed in 희망이음'], '평가신청서·자체평가서': ['strict','Fixed forms in the evaluation system'],
+    '자체평가서 인쇄본·이용아동 명단': ['standard','Printed from the system; list in any layout']
+  };
   /* name: [fix window, copies, scoring, 필수 조건] */
   var DOCMETA = {
     '운영규정': ['now','center','yn',0], '아동학대 금지 서약서': ['now','staff','yn',0], '아동권리교육 계획서·일지·평가서': ['time','center','yn',0],
@@ -1014,6 +1049,9 @@ td.req { min-width: 320px; max-width: 54ch; }
     r.ty = ACTIONS[r.d] ? 'action' : 'doc';
     var meta = DOCMETA[r.d] || ['now', 'center', 'none', 0];
     r.fx = meta[0]; r.per = meta[1]; r.sc = meta[2]; r.gate = !!meta[3];
+    var fm = r.ty === 'action' ? ['na', 'Something you do; nothing to write'] : FORMMAP[r.d];
+    if (!fm) throw new Error('No format for ' + r.d);
+    r.fm = fm[0]; r.fmNote = fm[1];
     r.by = r.i.length ? BYMAP[r.i[0]] : 'none';
     r.pts = r.i.length ? r.i.reduce(function (s, k) { return s + PTS[k]; }, 0) : null;
     r.indKey = r.i.length ? parseFloat(r.i[0].replace('-', '.')) : 99;
@@ -1029,26 +1067,27 @@ td.req { min-width: 320px; max-width: 54ch; }
       return '<div class="req-group"><span class="req-label">' + esc(REQL[g[0]]) + '</span><ul class="req-list">' + g[1].map(function (f) { return '<li>' + esc(f) + '</li>'; }).join('') + '</ul></div>';
     }).join('');
     if (!r.reqHtml) r.reqHtml = '<span class="req-none">None specified</span>';
-    r.hay = [r.d, r.e, r.c, r.w, r.f, r.indText, AREAS[r.a], label(FMT, r.m), r.actText, r.ty === 'action' ? 'action' : 'document', label(FIX, r.fx), label(PER, r.per), label(SCO, r.sc), r.by, r.gate ? '필수 조건' : '', reqText].join(' ').toLowerCase();
+    r.hay = [r.d, r.e, r.c, r.w, r.f, r.indText, AREAS[r.a], label(FMT, r.m), r.actText, r.ty === 'action' ? 'action' : 'document', label(FORM, r.fm), r.fmNote, label(FIX, r.fx), label(PER, r.per), label(SCO, r.sc), r.by, r.gate ? '필수 조건' : '', reqText].join(' ').toLowerCase();
   });
 
-  var state = { only: null, area: 'all', type: 'all', fix: 'all', gate: 'all', sco: 'all', by: 'all', per: 'all', q: '', freq: 'all', fmt: 'all', act: 'all', req: 'all', sort: 'area', dir: 1 };
+  var state = { only: null, area: 'all', type: 'all', form: 'all', fix: 'all', gate: 'all', sco: 'all', by: 'all', per: 'all', q: '', freq: 'all', fmt: 'all', act: 'all', req: 'all', sort: 'area', dir: 1 };
   function fill(sel, list, allLabel) {
     var html = allLabel ? '<option value="all">' + esc(allLabel) + '</option>' : '';
     list.forEach(function (o) { html += '<option value="' + o[0] + '">' + esc(o[1]) + '</option>'; });
     sel.innerHTML = html;
   }
   fill($('f-area'), AREA_ORDER.map(function (a) { return [a, a === 'process' ? '평가 절차 (no points)' : AREAS[a]]; }), 'All areas');
+  fill($('f-form'), FORM, 'Any');
   fill($('f-fix'), FIX, 'Any');
   fill($('f-sco'), SCO, 'Any');
   fill($('f-by'), BYL, 'Anyone');
   fill($('f-per'), PER, 'Any');
   fill($('f-freq'), FREQ, 'Any frequency');
-  fill($('f-fmt'), FMT, 'Any format');
+  fill($('f-fmt'), FMT, 'Any');
   fill($('f-act'), ACT, 'Any action');
   fill($('sort-key'), SORTS, null);
 
-  var COLS = [['area','Area','pri fil con'],['doc','Document or action','pri fil con'],['type','Type','pri fil con'],['ind','Indicator','pri'],['pts','Points','pri'],['fix','Fix window','pri'],['gate','필수 조건','pri'],['sco','Scoring','pri'],['by','Checked by','pri'],['per','Copies','pri'],['freq','How often','pri fil'],['fmt','Online or offline','fil'],['act','Keep or submit','fil'],['where','Where','fil'],[null,'What it must contain','pri fil con'],['req','Required fields','pri fil con']];
+  var COLS = [['area','Area','pri fil con'],['doc','Document or action','pri fil con'],['type','Type','pri fil con'],['form','Format','pri fil con'],['ind','Indicator','pri'],['pts','Points','pri'],['fix','Fix window','pri'],['gate','필수 조건','pri'],['sco','Scoring','pri'],['by','Checked by','pri'],['per','Copies','pri'],['freq','How often','pri fil'],['fmt','Online or offline','fil'],['act','Keep or submit','fil'],['where','Where','fil'],[null,'What it must contain','pri fil con'],['req','Required fields','pri fil con']];
   function setCls(i) { return COLS[i][2].split(' ').map(function (s) { return 's-' + s; }).join(' '); }
   $('head-row').innerHTML = COLS.map(function (c, i) {
     if (!c[0]) return '<th scope="col" class="' + setCls(i) + '"><span class="th-plain">' + esc(c[1]) + '</span></th>';
@@ -1059,6 +1098,7 @@ td.req { min-width: 320px; max-width: 54ch; }
     area: function (x, y) { return AREA_ORDER.indexOf(x.a) - AREA_ORDER.indexOf(y.a) || x.indKey - y.indKey; },
     doc: function (x, y) { return x.d.localeCompare(y.d, 'ko'); },
     type: function (x, y) { return (x.ty === 'action' ? 1 : 0) - (y.ty === 'action' ? 1 : 0); },
+    form: function (x, y) { return rank(FORM, x.fm) - rank(FORM, y.fm); },
     fix: function (x, y) { return rank(FIX, x.fx) - rank(FIX, y.fx); },
     gate: function (x, y) { return (y.gate ? 1 : 0) - (x.gate ? 1 : 0); },
     sco: function (x, y) { return rank(SCO, x.sc) - rank(SCO, y.sc); },
@@ -1089,19 +1129,20 @@ td.req { min-width: 320px; max-width: 54ch; }
       td(0, '', 'Area', '<span class="area"><span class="dot ' + r.a + '-bg"></span>' + esc(AREAS[r.a]) + '</span>') +
       td(1, 'doc', 'Name', '<span><span class="doc-ko">' + esc(r.d) + '</span><span class="doc-en">' + esc(r.e) + '</span></span>') +
       td(2, '', 'Type', '<span>' + (r.ty === 'action' ? '<span class="pill">Action</span>' : '<span class="type-doc">Document</span>') + '</span>') +
-      td(3, '', 'Indicator', '<span class="mono">' + esc(r.indText) + '</span>') +
-      td(4, '', 'Points', '<span class="pts">' + (r.pts === null ? '—' : r.pts) + (r.x ? '<span class="sub">supporting</span>' : '') + '</span>') +
-      td(5, '', 'Fix window', '<span>' + (r.fx === 'time' ? '<span class="pill">Time-bound</span>' : '<span class="type-doc">Fixable now</span>') + '</span>') +
-      td(6, '', '필수 조건', '<span>' + (r.gate ? '<span class="pill">필수 조건</span>' : '<span class="req-none">—</span>') + '</span>') +
-      td(7, '', 'Scoring', '<span>' + esc(label(SCO, r.sc)) + '</span>') +
-      td(8, '', 'Checked by', '<span>' + esc(label(BYL, r.by)) + '</span>') +
-      td(9, '', 'Copies', '<span>' + esc(label(PER, r.per)) + '</span>') +
-      td(10, 'freq', 'How often', '<span>' + esc(r.f) + '</span>') +
-      td(11, '', 'Format', '<span><span class="pill ' + r.m + '">' + esc(label(FMT, r.m)) + '</span></span>') +
-      td(12, '', 'Action', '<span>' + esc(r.actText) + '</span>') +
-      td(13, 'where', 'Where', '<span>' + esc(r.w) + '</span>') +
-      td(14, 'what', 'Contains', '<span>' + esc(r.c) + '</span>') +
-      td(15, 'req', 'Fields', '<div>' + r.reqHtml + '</div>') +
+      td(3, 'form', 'Format', '<span><span class="pill fm-' + r.fm + '">' + esc(label(FORM, r.fm)) + '</span><span class="fm-note">' + esc(r.fmNote) + '</span></span>') +
+      td(4, '', 'Indicator', '<span class="mono">' + esc(r.indText) + '</span>') +
+      td(5, '', 'Points', '<span class="pts">' + (r.pts === null ? '—' : r.pts) + (r.x ? '<span class="sub">supporting</span>' : '') + '</span>') +
+      td(6, '', 'Fix window', '<span>' + (r.fx === 'time' ? '<span class="pill">Time-bound</span>' : '<span class="type-doc">Fixable now</span>') + '</span>') +
+      td(7, '', '필수 조건', '<span>' + (r.gate ? '<span class="pill">필수 조건</span>' : '<span class="req-none">—</span>') + '</span>') +
+      td(8, '', 'Scoring', '<span>' + esc(label(SCO, r.sc)) + '</span>') +
+      td(9, '', 'Checked by', '<span>' + esc(label(BYL, r.by)) + '</span>') +
+      td(10, '', 'Copies', '<span>' + esc(label(PER, r.per)) + '</span>') +
+      td(11, 'freq', 'How often', '<span>' + esc(r.f) + '</span>') +
+      td(12, '', 'Online or offline', '<span><span class="pill ' + r.m + '">' + esc(label(FMT, r.m)) + '</span></span>') +
+      td(13, '', 'Keep or submit', '<span>' + esc(r.actText) + '</span>') +
+      td(14, 'where', 'Where', '<span>' + esc(r.w) + '</span>') +
+      td(15, 'what', 'Contains', '<span>' + esc(r.c) + '</span>') +
+      td(16, 'req', 'Fields', '<div>' + r.reqHtml + '</div>') +
       '</tr>';
   }
   function render() {
@@ -1110,6 +1151,7 @@ td.req { min-width: 320px; max-width: 54ch; }
       if (state.only && r.d !== state.only) return false;
       if (state.area !== 'all' && r.a !== state.area) return false;
       if (state.type !== 'all' && r.ty !== state.type) return false;
+      if (state.form !== 'all' && r.fm !== state.form) return false;
       if (state.fix !== 'all' && r.fx !== state.fix) return false;
       if (state.gate !== 'all' && r.gate !== (state.gate === 'yes')) return false;
       if (state.sco !== 'all' && r.sc !== state.sco) return false;
@@ -1145,13 +1187,13 @@ td.req { min-width: 320px; max-width: 54ch; }
     render();
   }
   function resetFilters() {
-    ['fix', 'gate', 'sco', 'by', 'per'].forEach(function (k) { state[k] = 'all'; $('f-' + k).value = 'all'; });
+    ['form', 'fix', 'gate', 'sco', 'by', 'per'].forEach(function (k) { state[k] = 'all'; $('f-' + k).value = 'all'; });
     state.only = null; state.area = 'all'; state.type = 'all'; $('f-area').value = 'all'; $('f-type').value = 'all'; state.q = ''; state.freq = 'all'; state.fmt = 'all'; state.act = 'all'; state.req = 'all';
     $('q').value = ''; $('f-freq').value = 'all'; $('f-fmt').value = 'all'; $('f-act').value = 'all'; $('f-req').value = 'all';
   }
   $('f-area').addEventListener('change', function (ev) { state.area = ev.target.value; render(); });
   $('f-type').addEventListener('change', function (ev) { state.type = ev.target.value; render(); });
-  ['fix', 'gate', 'sco', 'by', 'per'].forEach(function (k) { $('f-' + k).addEventListener('change', function (ev) { state[k] = ev.target.value; render(); }); });
+  ['form', 'fix', 'gate', 'sco', 'by', 'per'].forEach(function (k) { $('f-' + k).addEventListener('change', function (ev) { state[k] = ev.target.value; render(); }); });
   $('cols').addEventListener('change', function (ev) { $('doc-table').dataset.cols = ev.target.value; });
   $('q').addEventListener('input', function (ev) { state.q = ev.target.value; render(); });
   $('f-freq').addEventListener('change', function (ev) { state.freq = ev.target.value; render(); });
