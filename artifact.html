@@ -121,7 +121,7 @@ input:disabled, select:disabled { cursor: not-allowed; opacity: 0.6; }
 .sortpair select { flex: 1 1 auto; }
 .dirbtn { flex: 0 0 auto; height: 36px; padding: 0 10px; font: inherit; font-size: 13px; border: 1px solid var(--line); border-radius: 4px; background: var(--bg); color: var(--ink); cursor: pointer; white-space: nowrap; }
 .status { font-size: 14px; }
-.table-wrap { overflow-x: auto; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
+.table-wrap { overflow: auto; max-height: max(420px, calc(100vh - 90px)); overscroll-behavior: contain; background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
 table { border-collapse: collapse; width: 100%; font-size: 14px; }
 table[data-cols="pri"] { min-width: 2100px; } table[data-cols="fil"] { min-width: 1750px; } table[data-cols="con"] { min-width: 1000px; } table[data-cols="all"] { min-width: 2600px; }
 table[data-cols="pri"] th:not(.s-pri), table[data-cols="pri"] td:not(.s-pri), table[data-cols="fil"] th:not(.s-fil), table[data-cols="fil"] td:not(.s-fil), table[data-cols="con"] th:not(.s-con), table[data-cols="con"] td:not(.s-con) { display: none; }
@@ -140,7 +140,7 @@ table[data-cols="pri"] th:not(.s-pri), table[data-cols="pri"] td:not(.s-pri), ta
 .tier-empty { padding: 4px 16px 14px; margin: 0; font-size: 14px; color: var(--muted); }
 th, td { text-align: left; vertical-align: top; padding: 10px 12px; border-bottom: 1px solid var(--line); }
 tbody tr:last-child td { border-bottom: 0; }
-thead th { background: var(--surface-2); font-weight: 500; font-size: 12px; letter-spacing: 0.03em; white-space: nowrap; padding: 0; }
+thead th { position: sticky; top: 0; z-index: 2; background: var(--surface-2); box-shadow: inset 0 -1px 0 var(--line); font-weight: 500; font-size: 12px; letter-spacing: 0.03em; white-space: nowrap; padding: 0; }
 .th-btn { font: inherit; color: var(--ink); background: none; border: 0; width: 100%; text-align: left; padding: 10px 12px; cursor: pointer; display: flex; gap: 6px; align-items: center; }
 .th-btn .arrow { font-family: var(--font-data); color: var(--muted); min-width: 1ch; }
 th[aria-sort="ascending"] .arrow, th[aria-sort="descending"] .arrow { color: var(--accent); }
@@ -178,6 +178,7 @@ td.req { min-width: 320px; max-width: 54ch; }
   .ctl-y select { width: 104px; padding: 0 6px; }
   .item-raw { text-align: left; padding-top: 0; }
   table, table[data-cols] { min-width: 0; }
+  .table-wrap { max-height: none; overflow: visible; }
   thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
   table, tbody, tr, td { display: block; width: 100%; }
   tbody tr { padding: 12px 14px; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
