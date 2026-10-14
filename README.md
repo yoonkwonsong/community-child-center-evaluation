@@ -1,56 +1,56 @@
-# 지역아동센터 Evaluation Scorecard
+# 지역아동센터 정기평가 자체점검표
 
-A self-check tool for 지역아동센터 (community child center) directors preparing for the **5기 정기평가** (2024–2026 cycle, existing centers). It lists every scored item in the evaluation, lets a center mark what it meets year by year, and estimates the score out of 100 using the conversion tables in the *2026년 지역아동센터 평가사업 안내* (평가편람).
+**5기 정기평가**(2024~2026년 주기, 기존 시설)를 준비하는 지역아동센터 시설장을 위한 자체점검 도구입니다. 평가지표의 모든 평가항목을 제시하고, 센터가 연도별 충족 여부를 표시하면 『2026년 지역아동센터 평가사업 안내』(평가편람)의 환산 기준에 따라 100점 만점 기준 예상 점수를 산정합니다.
 
-## What it does
+## 주요 기능
 
-The page has three views:
+화면은 세 가지로 구성됩니다.
 
-- **Scorecard.** One card per indicator (1-1 to 4-7), with every scored criterion as a row. Yearly items have columns for 2023, 2024 and 2025; quality items are rated 0, 1 or 2; per-child records are rated for the two best files and the weakest file, because evaluators check two files the center chooses and one picked at random. 필수 조건 (gate conditions), the 4-6 accounting deductions, the 4-7 donation rules and the abuse-case deduction are all applied.
-- **Priority.** Every item not at full marks, sorted into four groups: do on time, fix now (yes-or-no items), raise quality (graded items), and cannot be fixed (past years and penalties). Each item shows how many points it is worth on its own, and the top shows the highest score still reachable.
-- **Documents and actions.** All 47 documents and actions behind the scored items, with how often each is needed, whether it is kept online (희망이음) or on paper, whether it is kept or submitted, what it must contain, and the specific required fields. Each document is also marked by format: **Strict** (a statutory or official form, a 희망이음 or evaluation-system screen, or a paper issued by someone else), **Standard** (the 운영 매뉴얼 has a sample or the 평가편람 names items that must appear, but the layout is yours) or **Format-free** (any record that shows it happened), with a one-line reason. For the 25 documents where the sources give a recommended form, the format label has an arrow and opens that form on its own page: blank sample forms rebuilt from the 지역아동센터 운영 매뉴얼 [예시] pages and the 2026 평가편람 appendix, outlines where the sample is a long set of rules, and the writing guide's list for the program log and evaluation, whose sample pages were not available. Each form page also lists what the evaluation checks. A page can be linked directly with `#form=<document name>`. It can be filtered and sorted by area, type, format, fix window, 필수 조건, scoring type, who checks it (현장평가, 지도점검 or the survey) and number of copies.
+- **지표별 점검.** 평가지표(1-1~4-7)별로 카드 1개씩, 모든 평가항목을 행으로 표시합니다. 연도별 항목은 2023·2024·2025년 열로, 수준 평가 항목은 0·1·2로 표시합니다. 개별 아동 기록은 평가위원이 시설 선정 파일 2개와 무작위 선정 파일 1개를 확인하므로, 가장 충실한 파일 2개와 가장 미흡한 파일 1개를 기준으로 표시합니다. 필수 조건, 4-6 회계 관리 감점, 4-7 후원금 관리 기준, 아동학대 사례 감점을 모두 반영합니다.
+- **우선순위.** 만점이 아닌 모든 항목을 네 단계(기한 내 작성, 즉시 보완: 충족 여부 항목, 수준 향상: 수준 평가 항목, 보완 불가: 지난 연도 및 감점 사항)로 분류합니다. 항목별로 단독 보완 시 늘어나는 점수를 표시하고, 상단에 현재 도달 가능한 최고 점수를 보여 줍니다.
+- **구비서류·이행사항.** 평가항목의 근거가 되는 문서와 이행사항 47건의 작성 주기, 관리 방식(전산·서면), 보관·제출 여부, 주요 내용, 필수 기재 항목을 정리하였습니다. 서식 유형은 **지정 서식**(법정·공식 서식, 희망이음 또는 평가시스템 화면, 타 기관 발급 문서), **예시 서식**(운영 매뉴얼에 예시가 있거나 평가편람에 필수 항목이 제시되어 있으나 양식은 자율), **자유 양식**(실시 사실을 확인할 수 있는 기록)으로 구분하고 분류 근거를 함께 적었습니다. 권장 서식이 있는 25건은 서식 유형에 화살표가 표시되며, 누르면 별도 화면에서 권장 서식을 볼 수 있습니다. 운영 매뉴얼 [예시]와 2026년 평가편람 부록을 바탕으로 재구성한 빈 서식, 분량이 많은 규정의 목차, 예시 쪽을 확인하지 못한 프로그램 일지·평가서의 작성 지침을 제공하며, 각 화면에는 평가 확인 사항을 함께 표시합니다. `#form=<서류명>`으로 해당 화면에 바로 연결할 수 있습니다. 영역, 구분, 서식 유형, 보완 시기, 필수 조건, 평가 방식, 확인 방법(현장평가·지도점검·설문조사), 작성 단위로 필터링하고 정렬할 수 있습니다.
 
-## Files
+## 파일 구성
 
-| File | What it is |
+| 파일 | 설명 |
 |---|---|
-| `artifact.html` | The page as published as a claude.ai artifact. This is the source of truth. |
-| `index.html` | The same page wrapped as a standalone HTML file, so it opens directly in a browser or on GitHub Pages. |
-| `tests/scoring_test.py` | Runs the scoring rules on 20 sample checklists and compares the totals with the handbook tables. Needs Node.js. |
-| `tests/ui_audit.py` | Browser audit with Playwright: saving against a mock shared store, scoring through the interface, all three views, filters and sorting, and phone layout. |
+| `artifact.html` | claude.ai 아티팩트로 게시한 원본 페이지입니다. 모든 수정은 이 파일에서 합니다. |
+| `index.html` | 같은 페이지를 독립 HTML 파일로 만든 것으로, 브라우저나 GitHub Pages에서 바로 열 수 있습니다. |
+| `scripts/make_standalone.py` | `artifact.html`에서 `index.html`을 다시 만듭니다. |
+| `tests/scoring_test.py` | 점수 산정 규칙을 20개 사례에 적용하여 평가편람 환산표와 비교합니다. Node.js가 필요합니다. |
+| `tests/ui_audit.py` | Playwright 브라우저 점검: 공동 저장소 모의 저장, 화면을 통한 점수 산정, 세 화면과 권장 서식 화면, 필터·정렬, 휴대전화 화면을 확인합니다. |
 
-## How saving works
+## 저장 방식
 
-- **As a claude.ai artifact:** the page uses the artifact's database to keep **one shared checklist per center**. Everyone the page is shared with at Contributor level or higher sees and edits the same marks; view-only people see them read-only. A second center needs its own copy of the page.
-- **Opened as a plain file (`index.html`):** there is no shared store, so marks are saved in that browser only (`localStorage`).
+- **claude.ai 아티팩트에서 사용할 때:** 아티팩트 데이터베이스를 이용하여 **센터별로 하나의 공동 점검표**를 유지합니다. 편집 권한이 있는 모든 사용자가 같은 내용을 보고 수정하며, 보기 권한만 있는 사용자는 읽기 전용으로 봅니다. 다른 센터는 별도의 사본을 사용하여야 합니다.
+- **파일(`index.html`)로 열 때:** 공동 저장소가 없으므로 해당 브라우저에만 저장됩니다(`localStorage`).
 
-The "Current year" setting in the Priority view is always saved in the browser only.
+우선순위 화면의 ‘현재 연도’ 설정은 항상 브라우저에만 저장됩니다.
 
-## Running the tests
+## 테스트 실행
 
 ```bash
-python3 tests/scoring_test.py      # needs node
+python3 tests/scoring_test.py      # node 필요
 pip install playwright && python3 -m playwright install chromium
 python3 tests/ui_audit.py
 ```
 
-## Scoring interpretations
+## 점수 산정 해석 기준
 
-The handbook does not spell these out, so the tool takes the stricter reading:
+평가편람에 명시되지 않은 부분은 엄격한 해석을 따랐습니다.
 
-- A program year that fails its 필수 조건 earns nothing for that year.
-- If any checked child file fails a 필수 조건, the whole indicator scores 0.
-- For 종사자 의무교육, an item counts only if all three years are met.
-- For 후원금, a failed condition costs all 4 points, although fixing it before the 지도점검 can reduce the loss to 1 or 2.
+- 필수 조건을 충족하지 못한 연도의 프로그램은 해당 연도 점수가 없습니다.
+- 확인한 아동 파일 중 하나라도 필수 조건을 충족하지 못하면 해당 지표 전체가 0점입니다.
+- 종사자 의무교육은 3개 연도를 모두 충족한 항목만 인정합니다.
+- 후원금 조건을 충족하지 못하면 4점이 모두 감점되나, 지도점검 전에 보완하면 감점이 1~2점으로 줄어들 수 있습니다.
 
-## Limitations
+## 한계
 
-- Built for the **5기 cycle and existing centers** only. New centers (신규시설) score differently, and the 6기 cycle from 2027 may change the indicators.
-- The score is a **self-estimate**. Evaluators judge quality, so the real score can be lower.
-- The required-field lists come from the example forms in a 2024-based 시도지원단 운영 매뉴얼, and the 희망이음 rules from the 2023 지원사업 안내. They should be confirmed with the local 시도지원단 and 시·군·구.
-- The interface is in English with Korean terms.
+- **5기 정기평가 기존 시설** 기준으로만 작성하였습니다. 신규시설은 산정 방식이 다르며, 2027년부터 시작되는 6기 평가에서는 지표가 변경될 수 있습니다.
+- 점수는 **자체 추정치**입니다. 평가위원이 질적 수준을 판단하므로 실제 점수는 더 낮을 수 있습니다.
+- 필수 기재 항목은 2024년 기준 시도지원단 운영 매뉴얼의 예시 서식을, 희망이음 관련 기준은 2023년 지원사업 안내를 바탕으로 하였습니다. 관할 시도지원단과 시·군·구에 확인하시기 바랍니다.
 
-## Sources
+## 출처
 
 - [2026년 지역아동센터 평가사업 안내 (아동권리보장원)](https://ncrc.or.kr/upload/ncrc/2026%EB%85%84%20%EC%A7%80%EC%97%AD%EC%95%84%EB%8F%99%EC%84%BC%ED%84%B0%20%ED%8F%89%EA%B0%80%EC%82%AC%EC%97%85%20%EC%95%88%EB%82%B4.pdf)
 - [지역아동센터 운영 매뉴얼 (시도지원단)](http://www.icarejb.or.kr/main/filedown.php?menu=59&no=979)
