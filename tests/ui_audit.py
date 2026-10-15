@@ -212,10 +212,11 @@ with sync_playwright() as p:
     pg.click('#tab-prio'); pg.select_option('#cur-year', '3')
     tiers = lambda: [pg.locator('#prio .tier').nth(i).locator('.prow').count() for i in range(4)]
     t0 = tiers()
-    ok('P1 2026 retains three feedback rows and 2025 sharing; historical child records cannot be rewritten', pg.inner_text('#reach') == '29' and t0[0] == 4 and t0[1] > 0 and t0[2] > 0 and t0[3] > 0, (pg.inner_text('#reach'), t0))
+    ok('P0 unknown donation status is not treated as proven prohibition', '추가 점수를 가정하지 않습니다' in pg.locator('#prio').inner_text() and not pg.locator('#prio').inner_text().count('최대 4점이 달려'))
+    ok('P1 2026 retains three feedback rows and 2025 sharing; historical child records cannot be rewritten', pg.inner_text('#reach') == '25' and t0[0] == 4 and t0[1] > 0 and t0[2] > 0 and t0[3] > 0, (pg.inner_text('#reach'), t0))
     pg.select_option('#cur-year', '2')
     t1 = tiers()
-    ok('P2 with 2025 still open: on-time items appear; reach is 48', pg.inner_text('#reach') == '48' and t1[0] > 0 and t1[3] < t0[3], (pg.inner_text('#reach'), t1))
+    ok('P2 with 2025 still open: on-time items appear; reach is 44', pg.inner_text('#reach') == '44' and t1[0] > 0 and t1[3] < t0[3], (pg.inner_text('#reach'), t1))
     gates_first = pg.locator('#prio .tier').nth(0).locator('.prow').first.locator('.pill').count() == 1
     ok('P3 필수 조건 items are listed first in a group', gates_first)
     pg.reload(); pg.wait_for_timeout(300); pg.click('#tab-prio')
@@ -224,7 +225,7 @@ with sync_playwright() as p:
     ok('P5 "Open in scorecard" returns to the scorecard', pg.locator('#view-score').is_visible() and not pg.locator('#view-prio').is_visible())
     pg.check(C('1-2_c1')); pg.check(C('1-2_c2')); pg.check(C('1-2_c3')); pg.check(C('1-2_c4'))
     pg.click('#tab-prio')
-    ok('P6 fixed items leave the list and the reach is unchanged', pg.inner_text('#reach') == '48' and tiers()[1] == t1[1] - 4, (pg.inner_text('#reach'), tiers(), t1))
+    ok('P6 fixed items leave the list and the reach is unchanged', pg.inner_text('#reach') == '44' and tiers()[1] == t1[1] - 4, (pg.inner_text('#reach'), tiers(), t1))
     pg.locator('#prio .docbtn[data-doc]').first.click(); pg.wait_for_timeout(150)
     ok('P7 document button in the priority list opens that document', pg.locator('#view-docs').is_visible() and pg.locator('#rows tr').count() == 1 and pg.input_value('#cols') == 'con')
     vis = lambda label: pg.locator('#head-row th', has_text=label).first.is_visible()
@@ -278,6 +279,7 @@ with sync_playwright() as p:
     pg.click('#tab-prio'); pg.select_option('#cur-year', '3')
     ok('J5 corrected donations appear as historical residual deductions', pg.locator('#prio .tier').nth(3).inner_text().count('위반 후 잔여 감점') == 2)
     pg.select_option('#cur-year', '4')
+    ok('J7 closed evaluation does not promise improvement', pg.inner_text('#reach') == pg.inner_text('#total'))
     ok('J6 2027 closes feedback and sharing window', pg.locator('#prio .tier').nth(0).locator('.prow').count() == 0)
     pg.close()
     # I: page without window.claude at all
