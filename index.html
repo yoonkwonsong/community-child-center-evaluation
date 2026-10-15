@@ -313,7 +313,7 @@ td.req { min-width: 320px; max-width: 54ch; }
   <section id="view-prio" class="prio-view" aria-label="우선순위" hidden>
     <div class="prio-head">
       <div class="prio-sum">
-        <span class="calc-label">현재 도달 가능한 최고 점수</span>
+        <span class="calc-label">보완 시 예상 최고 점수</span>
         <div class="prio-num"><span id="reach">100</span><span class="of">/ 100</span></div>
         <p class="calc-line" id="reach-line"></p>
       </div>
@@ -432,13 +432,15 @@ td.req { min-width: 320px; max-width: 54ch; }
 
   <footer class="notes">
     <p><strong>점수 산정 방식.</strong> 각 항목은 평가위원과 같은 방식으로 표시합니다. 충족 여부 또는 0·1·2의 수준으로 평가하며, 원점수를 합산한 뒤 2026년 평가편람(기존 시설)의 환산 기준에 따라 점수로 환산합니다. 연도 또는 지표 전체를 0점 처리하는 필수 조건도 반영합니다. 자체 추정치이므로 실제 점수는 평가위원의 질적 판단에 따라 달라질 수 있습니다.</p>
-    <p><strong>평가대상기간과 아동 파일.</strong> 2023·2024·2025년 열은 2026년 평가의 평가대상기간 3년입니다. ‘현재’는 평가 시점의 상태를 확인하는 항목입니다. 개별 아동 기록은 시설이 선정한 2명과 평가위원이 선정한 1명, 총 3명의 파일을 확인합니다. 이 점검표는 가장 충실한 파일 2개와 가장 미흡한 파일 1개를 기준으로 계산하여 가장 불리한 경우를 가정합니다.</p>
-    <p><strong>해석 기준.</strong> 평가편람에 명시되지 않은 부분은 엄격한 해석을 따랐습니다. 필수 조건을 충족하지 못한 연도의 프로그램은 해당 연도 점수가 없습니다. 아동 파일 중 하나라도 필수 조건을 충족하지 못하면 해당 지표 전체가 0점입니다. 종사자 의무교육은 3개 연도가 모두 표시된 항목만 인정합니다. 후원금 조건을 충족하지 못하면 4점이 모두 감점되나, 지도점검 전에 보완하면 감점이 1~2점으로 줄어들 수 있습니다. 해당 기준은 시도지원단에 확인하십시오.</p>
+    <p><strong>평가대상기간과 아동 파일.</strong> 2023·2024·2025년 열은 2026년 평가의 평가대상기간 3년입니다. ‘현재’는 평가 시점의 상태를 확인하는 항목입니다. 개별 아동 기록은 시설이 선정한 2명과 평가위원이 선정한 1명, 총 3명의 파일을 확인합니다. 세 파일의 점수를 각각 입력합니다. 평가기간을 채운 아동을 우선 선정하며, 평가위원 선정 전에는 예상 파일을 입력합니다. 이전 버전의 충실한 파일 값은 시설 선정 1·2에 복사되므로 각 파일을 다시 확인하십시오.</p>
+    <p><strong>해석 기준.</strong> 평가편람에 명시되지 않은 부분은 엄격한 해석을 따랐습니다. 필수 조건을 충족하지 못한 연도의 프로그램은 해당 연도 점수가 없습니다. 아동 파일 중 하나라도 필수 조건을 충족하지 못하면 해당 지표 전체가 0점입니다. 종사자 의무교육은 3개 연도가 모두 표시된 항목만 인정합니다. 후원금 위반 후 개선이 확인되면 항목별 감점이 1~2점으로 줄어들며, 여러 항목의 감점은 합산합니다. 아동별 필수조건의 합산 처리와 의무교육의 3년 충족 판단은 편람에 세부 계산 예시가 없어 보수적으로 추정합니다. 해당 기준은 시도지원단에 확인하십시오.</p>
     <p><strong>공동 사용.</strong> 이 페이지는 센터 1곳의 점검표입니다. 편집 권한이 있는 모든 사용자가 같은 점검 내용을 보고 수정합니다. 다른 센터는 별도의 사본을 사용하여야 합니다.</p>
-    <p><strong>우선순위 화면.</strong> 만점이 아닌 항목을 네 단계로 분류합니다. ‘기한 내 작성’은 아직 진행 중인 연도의 기록, ‘즉시 보완’은 평가 당일 상태로 확인하는 충족 여부 항목, ‘수준 향상’은 수준 평가 항목, ‘보완 불가’는 지난 연도와 감점 사항입니다. 항목 옆 숫자는 그 항목만 만점이 될 때 늘어나는 점수이며, 0으로 표시된 항목은 같은 지표의 다른 항목과 함께 충족하여야 점수가 부여됩니다. 기록을 소급하여 작성하지 마십시오. 평가편람은 허위 기재에 대해 불이익을 부여합니다.</p>
-    <p><strong>서류 분류 기준.</strong> 보완 시기: ‘즉시 보완 가능’은 평가 당일의 상태로 확인하고, ‘기간 내 작성’은 해당 연도 또는 기간 중에 작성되어 있어야 합니다. 필수 조건: 미비 시 해당 연도 또는 지표 전체가 0점 처리됩니다. 평가 방식: ‘충족 여부’는 구비 시 만점이며, ‘수준 평가’는 충실성과 구체성에 따라 평가합니다. 확인 방법: 현장평가(64점), 시·군·구 지도점검(30점), 설문조사(6점). 작성 단위: 작성하여야 하는 부수로, 업무량을 좌우합니다.</p>
+    <p><strong>우선순위 화면.</strong> 만점이 아닌 항목을 네 단계로 분류합니다. ‘기한 내 작성’은 진행 중인 연도의 기록과 다음 연도에 확인하는 환류, ‘즉시 보완’은 평가 당일 상태로 확인하는 충족 여부 항목, ‘수준 향상’은 수준 평가 항목, ‘보완 불가’는 지난 연도와 감점 사항입니다. 항목 옆 숫자는 그 항목의 보완 또는 개선 확인을 반영할 때 늘어나는 점수이며, 0으로 표시된 항목은 같은 지표의 다른 항목과 함께 충족하여야 점수가 부여됩니다. 기록을 소급하여 작성하지 마십시오. 평가편람은 허위 기재에 대해 불이익을 부여합니다.</p>
+    <p><strong>서류 분류 기준.</strong> 보완 시기: ‘즉시 보완 가능’은 현장평가 또는 지자체 지도점검 시점의 상태로 확인하고, ‘기간 내 작성’은 해당 연도 또는 기간 중에 작성되어 있어야 합니다. 필수 조건: 미비 시 해당 연도 또는 지표 전체가 0점 처리됩니다. 평가 방식: ‘충족 여부’는 구비 시 만점이며, ‘수준 평가’는 충실성과 구체성에 따라 평가합니다. 확인 방법: 현장평가(64점), 시·군·구 지도점검(30점), 설문조사(6점). 작성 단위: 작성하여야 하는 부수로, 업무량을 좌우합니다.</p>
     <p><strong>서식 유형.</strong> ‘지정 서식’은 서식이 정해져 있는 경우입니다. 법정·공식 서식, 희망이음 또는 평가시스템 화면, 다른 기관이 발급하는 문서(시·군·구 통지서, 이수증, 영수증 등)가 해당하며, 주어진 서식대로 빈칸 없이 작성합니다. ‘예시 서식’은 운영 매뉴얼에 예시 서식이 있거나 평가편람에 반드시 포함할 항목이 제시된 경우로, 해당 항목을 포함하면 센터 자체 양식을 사용할 수 있습니다. ‘자유 양식’은 회의록, 메모, 사진 등 실시 사실을 확인할 수 있는 기록이면 인정됩니다. 유형 아래의 짧은 설명은 분류 근거입니다. 화살표(→)가 있는 유형을 누르면 해당 서류의 권장 서식이 별도 화면으로 열립니다. 운영 매뉴얼 또는 평가편람의 예시 서식, 분량이 많은 규정은 목차, 예시 쪽을 확인하지 못한 경우는 작성 지침을 제시합니다. 이 분류는 평가편람과 운영 매뉴얼을 바탕으로 정리한 것으로 공식 구분이 아니므로, 시·군·구 자체 서식이 있는지 시도지원단에 확인하십시오.</p>
     <p><strong>문서와 이행사항.</strong> 문서는 작성·보관·제출하는 서류이며, 이행사항은 아동 개별 파일 잠금 보관, 시설장 면담과 같이 작성할 서류 없이 실행하거나 갖추어야 하는 사항입니다. ‘평가 기준’은 평가편람의 확인 항목이고, ‘희망이음 서식’과 ‘매뉴얼 예시 서식’은 운영 매뉴얼 서식의 항목으로 센터 상황에 맞게 변경할 수 있습니다. 작성 주기는 점수를 받기 위한 최소 기준이며, 시·군·구에서 더 요구할 수 있습니다. 2027년부터 시작되는 6기 평가에서는 지표가 변경될 수 있습니다.</p>
+    <p><strong>2026년 증빙 인정 기준 (편람 89쪽).</strong> 내부문서 출력물에는 결재란 서명 또는 도장이 필요하며, 중간 결재 누락도 불인정합니다(중간관리자 미결재 사유 기재 필요). 희망이음에서 작성·관리한 기록은 화면으로 제시할 수 있고 결재 확인 필수에서 제외됩니다. 외부기관 승인은 공문 또는 희망이음 송수신 기록으로 확인합니다. 매뉴얼 예시의 사진·양식·출력 권장은 모두 평가 필수요건과 동일하지 않습니다.</p>
+    <p><strong>적용 범위.</strong> 2026년 일반 기존시설 정기평가 기준입니다. 신규시설·수시평가·재평가 및 별도 평가기간 적용 시설은 이 점수표를 그대로 사용하지 마십시오. 현장평가 이의신청은 당일을 제외한 5일 이내(주말·공휴일 포함), 1회에 한하며 사후 서류 보완은 사유가 아닙니다. 최종 결과는 중앙평가위원회가 결정합니다.</p>
     <p><strong>운영 매뉴얼.</strong> 이 점검표에서 ‘운영 매뉴얼’은 지역아동센터 전남지원단이 발간한 「지역아동센터 운영매뉴얼」 2025년판(제3판, 2024년 12월 발행)을 말합니다. 권장 서식 화면의 [예시] 번호는 각 서식에 표시한 판의 예시 번호이며, 2025년판에서 빠지거나 다른 서식으로 바뀐 예시는 2024년판 번호로 함께 실었습니다. 평가편람 부록의 서식과 참고 자료도 해당 서류 화면에 함께 실었습니다. 전남지원단 홈페이지의 정보마당 › 자료실에서 PDF와 한글(HWP) 서식 파일을 내려받을 수 있습니다. 매뉴얼의 예시는 전남 지역을 기준으로 작성되어 있으므로 센터 상황에 맞게 바꾸어 사용하십시오.</p>
     <p>출처: <a href="https://ncrc.or.kr/upload/ncrc/2026%EB%85%84%20%EC%A7%80%EC%97%AD%EC%95%84%EB%8F%99%EC%84%BC%ED%84%B0%20%ED%8F%89%EA%B0%80%EC%82%AC%EC%97%85%20%EC%95%88%EB%82%B4.pdf">2026년 지역아동센터 평가사업 안내</a> · <a href="https://www.jnicare.kr/bbs/board.php?bo_table=4_1">지역아동센터 전남지원단 「지역아동센터 운영매뉴얼」 2025년판·2024년판 (자료실)</a> · <a href="https://www.mohw.go.kr/kor/download/07/005.pdf">2023년 지역아동센터 지원사업 안내</a></p>
   </footer>
@@ -451,10 +453,11 @@ td.req { min-width: 320px; max-width: 54ch; }
   function mkT(k, per, w, name, desc, docs) { return { k: k, kind: 'tick', per: per, w: w, name: name, desc: desc, docs: docs || [], max: 1 }; }
   function mkG(per, mode, desc, docs) { return { k: 'g', kind: 'tick', per: per, gate: mode, w: 0, name: '필수 조건', desc: desc, docs: docs || [], max: 1 }; }
   function mkS(k, per, name, desc, docs, opts) { opts = opts || R2; return { k: k, kind: 'sel', per: per, w: 1, name: name, desc: desc, docs: docs || [], opts: opts, max: opts[opts.length - 1][0] }; }
-  function mkP(k, w, name, desc) { return { k: k, kind: 'tick', per: 'now', pen: true, w: w, name: name, desc: desc, docs: [], max: 1 }; }
+  function mkP(k, w, name, desc) { if (['p1','p2','p5'].indexOf(k) >= 0) return { k:k, kind:'tick', per:'now', pen:true, w:w, name:name, desc:desc, docs:[], max:1 }; return { k: k, kind: 'sel', per: 'now', pen: true, w: w, name: name, desc: desc, docs: [], max: 4, opts: [[0, '0건'], [1, '1건'], [2, '2건'], [3, '3건'], [4, '4건 이상 (감점 상한)']] }; }
+  function mkD(k, name, desc, docs, deduction) { var it = mkS(k, 'now', name, desc, docs, [[0, '미충족·미확인 · 4점 감점'], [2, '위반 후 개선 확인 · ' + deduction + '점 감점'], [1, '처음부터 충족 · 감점 없음']]); it.remedy = deduction; return it; }
   function progItems(label, extra) {
     return [
-      mkG('year', 'zero-year', '해당 연도 ' + label + '프로그램이 사업계획(연간·월간사업계획서 반영 또는 운영위원회·종사자 회의 승인)에 따라' + extra + ' 운영되었음. 계획서·일지·평가서를 모두 갖추고, 시설장 또는 생활복지사의 참여가 문서로 확인되며, 다른 영역의 프로그램과 중복 제출하지 않음.', ['프로그램 계획서', '프로그램 일지', '프로그램 평가서']),
+      mkG('year', 'zero-year', '해당 연도 ' + label + '프로그램이 사업계획(연간 및 월간사업계획서 반영 또는 운영위원회 심의·종사자 회의 논의)에 따라' + extra + ' 운영되었음. 계획서·일지·평가서를 모두 갖추고, 시설장 또는 생활복지사의 계획·실행(모니터링)·평가 참여가 문서로 확인되며, 다른 영역의 프로그램과 중복 제출하지 않음.', ['프로그램 계획서', '프로그램 일지', '프로그램 평가서']),
       mkS('c1', 'year', '① 내용의 적절성', label + '프로그램의 목적에 부합하는 내용으로 구성됨.'),
       mkS('c2', 'year', '② 목표의 적절성', '목표가 구체적이며 달성 정도를 측정할 수 있도록 설정됨.', ['프로그램 계획서']),
       mkT('c3', 'year', 2, '③ 의견 수렴', '계획 수립 전 아동, 보호자, 운영위원 또는 전문가의 의견을 수렴함. 2점 또는 0점.', ['의견 수렴 기록']),
@@ -496,49 +499,49 @@ td.req { min-width: 320px; max-width: 54ch; }
     { id: '2-3', timebound: true, area: 'program', name: '특화프로그램', en: '평가대상기간 중 1개 프로그램', max: 10, by: '현장평가', conv: sub(3),
       note: '평가대상기간 전체에 대해 1개 프로그램을 제시함. 원점수 13점을 10점으로 환산하며, 원점수 1점이 부족할 때마다 1점씩 감점됨. 1회기 프로그램은 일지와 평가서를 하나의 문서로 작성할 수 있음.',
       items: [
-        mkG('now', 'zero-all', '사업계획에 따라 운영되었음. 계획서·일지·평가서를 모두 갖추고, 시설장 또는 생활복지사의 참여가 문서로 확인되며, 문화·교육프로그램과 중복 제출하지 않음.', ['프로그램 계획서', '프로그램 일지', '프로그램 평가서']),
+        mkG('now', 'zero-all', '사업계획에 따라 운영되었음. 계획서·일지·평가서를 모두 갖추고, 시설장 또는 생활복지사의 계획·실행(모니터링)·평가 참여가 문서로 확인되며, 문화·교육프로그램과 중복 제출하지 않음.', ['프로그램 계획서', '프로그램 일지', '프로그램 평가서']),
         mkS('c1', 'now', '① 필요성', '지역사회 특수성 또는 이용아동의 특성·욕구에 따른 프로그램의 필요성이 계획서에 구체적으로 기술됨.', ['프로그램 계획서']),
         mkS('c2', 'now', '② 목표의 적절성', '목표가 구체적이며 달성 정도를 측정할 수 있도록 설정됨.'),
         mkS('c3', 'now', '③ 내용의 적절성', '①에서 제시한 필요성에 부합하는 내용으로 구성됨.'),
         mkS('c4', 'now', '④ 기록의 충실성', '계획서, 일지, 평가서가 모두 충실하게 작성됨.', ['프로그램 일지']),
         mkS('c5', 'now', '⑤ 아동의 참여', '이용아동이 프로그램 계획 수립과 평가 과정에 참여함.', ['아동 참여 기록']),
         mkS('c6', 'now', '⑥ 목표의 평가', '계획서에서 설정한 목표의 달성 정도를 평가함.', ['프로그램 평가서']),
-        mkT('c7', 'now', 1, '⑦ 지역사회와 공유', '프로그램의 진행 과정, 내용 또는 결과를 늦어도 다음 연도까지 지역사회와 공유함.', ['지역사회 공유 자료'])
+        mkT('c7', 'now', 1, '⑦ 지역사회와 공유', '프로그램의 진행 과정, 내용 또는 결과를 다음 연도까지 지역사회와 공유함. 2025년 프로그램은 2026년 현장평가 전까지 공유한 경우 인정됨.', ['지역사회 공유 자료'])
       ] },
     { id: '3-1', area: 'child', name: '개별 아동 관리', en: '', max: 6, by: '현장평가', conv: sub(18),
-      note: '아동 3명의 파일을 확인함(시설 선정 2명, 평가위원 선정 1명). 제시할 가장 충실한 파일 2개와, 평가위원이 선정할 수 있는 가장 미흡한 파일 1개를 기준으로 표시함. 원점수 24점을 6점으로 환산하며, 18점 이하는 0점.',
+      note: '아동 3명의 파일을 확인함(시설 선정 2명, 평가위원 선정 1명). 시설 선정 2명과 평가위원 선정 1명을 각각 표시함. 평가기간을 채운 아동을 우선 선정함. 원점수 24점을 6점으로 환산하며, 18점 이하는 0점.',
       items: [
-        mkG('now', 'zero-all', '모든 아동이 돌봄서비스 결정통지서와 빈칸 없이 작성된 응급처치 및 귀가 동의서를 갖춤.', ['돌봄서비스 결정통지서', '응급처치 및 귀가 동의서']),
+        mkG('now', 'zero-all', '평가대상 아동 3명 모두 돌봄서비스 결정통지서와 빈칸 없이 작성된 응급처치 및 귀가 동의서를 갖춤. 불가피하게 기록할 수 없는 항목은 사유를 명시함.', ['돌봄서비스 결정통지서', '응급처치 및 귀가 동의서']),
         mkS('c1', 'child', '① 아동관련 필수사항 기록', '성명, 주소, 연락처, 학교 관련 정보, 보호자 관련 정보, 의뢰 배경과 함께 성장 과정, 가족관계, 학교 및 가정생활, 특이점, 욕구와 강점, 서비스 제공 계획을 기록함.', ['아동카드'], [[0, '0 · 기록 없음'], [1, '1 · 일부만 기록'], [3, '3 · 모두 기록, 갱신 안 됨'], [5, '5 · 모두 기록, 최신 내용으로 갱신']]),
         mkS('c2', 'child', '② 서비스 지원기록', '아동에게 지원된 서비스와 프로그램을 연도별 1회 이상 기록함.', ['서비스 지원기록'], [[0, '0 · 연간 기록 없음'], [1, '1 · 지원 서비스 기록'], [2, '2 · 서비스 효과 및 아동 변화 포함'], [3, '3 · 환류 계획까지 포함']])
       ] },
     { id: '3-2', area: 'child', name: '아동 일상생활 관리', en: '', max: 6, by: '현장평가', conv: sub(6),
-      note: '가장 충실한 파일 2개와 가장 미흡한 파일 1개를 표시함. 원점수 12점을 6점으로 환산하며, 6점 이하는 0점.',
+      note: '시설 선정 2명과 평가위원 선정 1명의 파일을 각각 표시함. 원점수 12점을 6점으로 환산하며, 6점 이하는 0점.',
       items: [
-        mkG('year', 'zero-all', '모든 아동의 관찰일지가 해당 연도에 2회 이상(2024년부터 상·하반기 각 1회 이상) 법정종사자에 의해 작성됨. 하반기 입소 아동은 1회 작성으로 충족.', ['관찰일지']),
+        mkG('year', 'zero-all', '평가대상 아동 3명 모두의 관찰일지가 해당 연도에 2회 이상(2024년부터 상·하반기 각 1회 이상) 법정종사자에 의해 작성됨. 2024년부터 하반기 입소 아동은 1회 작성으로 충족하며, 2023년은 입소 시기와 관계없이 2회 이상 필요.', ['관찰일지']),
         mkS('c1', 'child', '① 내용의 적절성', '학습, 또래관계, 행동이나 정서상의 변화, 건강상의 유의점, 보호자나 아동의 특별한 요구사항을 기록함.', ['관찰일지'], [[0, '0 · 5개 영역 모두 없음'], [1, '1 · 일부 영역 기록'], [2, '2 · 5개 영역 모두 기록']]),
         mkS('c2', 'child', '② 기록의 충실성', '기록이 구체적이고 체계적임.', [], RICH)
       ] },
     { id: '3-3', area: 'child', name: '아동에 대한 정서 지원', en: '', max: 6, by: '현장평가', conv: sub(3),
-      note: '가장 충실한 파일 2개와 가장 미흡한 파일 1개를 표시함. 원점수 9점을 6점으로 환산하며, 3점 이하는 0점.',
+      note: '시설 선정 2명과 평가위원 선정 1명의 파일을 각각 표시함. 원점수 9점을 6점으로 환산하며, 3점 이하는 0점.',
       items: [
-        mkG('year', 'zero-all', '모든 아동의 아동상담일지가 해당 연도에 1회 이상 법정종사자에 의해 작성됨.', ['아동상담일지']),
+        mkG('year', 'zero-all', '평가대상 아동 3명 모두의 아동상담일지가 해당 연도에 1회 이상 법정종사자에 의해 작성됨.', ['아동상담일지']),
         mkT('c1', 'child', 1, '① 내용의 적절성', '문제해결, 갈등 중재, 욕구 파악, 행동에 대한 개입, 아동의 생각과 행동 발달을 위한 지지 중 1개 이상의 내용을 포함함.', ['아동상담일지']),
         mkS('c2', 'child', '② 기록의 충실성', '기록이 구체적이고 체계적임.', [], RICH)
       ] },
     { id: '3-4', area: 'child', name: '보호자 참여 지원', en: '', max: 6, by: '현장평가', conv: sub(3),
-      note: '가장 충실한 파일 2개와 가장 미흡한 파일 1개를 표시함. 전화상담, 내방상담, 가정방문도 기록되어 있으면 인정됨. 원점수 9점을 6점으로 환산함.',
+      note: '시설 선정 2명과 평가위원 선정 1명의 파일을 각각 표시함. 전화상담, 내방상담, 가정방문도 기록되어 있으면 인정됨. 원점수 9점을 6점으로 환산함.',
       items: [
-        mkG('year', 'zero-all', '모든 아동의 보호자 상담일지가 해당 연도에 1회 이상 법정종사자에 의해 작성됨.', ['보호자 상담일지']),
+        mkG('year', 'zero-all', '평가대상 아동 3명 모두의 보호자 상담일지가 해당 연도에 1회 이상 법정종사자에 의해 작성됨.', ['보호자 상담일지']),
         mkT('c1', 'child', 1, '① 내용의 적절성', '센터 생활·이용 만족도와 욕구 파악, 개별적 문제해결, 정서적 지지, 정보제공, 보호자 간담회 중 1개 이상의 내용을 포함함.', ['보호자 상담일지']),
         mkS('c2', 'child', '② 기록의 충실성', '기록이 구체적이고 체계적임.', [], RICH)
       ] },
     { id: '3-5', area: 'child', name: '이용자 만족도', en: '온라인 설문조사', max: 6, by: '설문조사',
       custom: function (g) { var p = g('s'); return (p > 0 && !g('r')) ? p - 1 : p; },
-      note: '평가 연도에 온라인으로 실시하는 아동·보호자 만족도 조사임. 아동 평균과 보호자 평균의 평균으로 점수를 산정함.',
+      note: '평가 연도에 온라인으로 실시하는 아동·보호자 만족도 조사임. 아동 평균과 보호자 평균의 평균을 소수점 첫째 자리로 반올림한 후 점수를 산정함. 자체·현장평가 대상이 아니며 이 입력은 예상 결과 확인용임.',
       items: [
-        mkS('s', 'now', '만족도 평균', '예상 또는 확인된 평균 점수(5점 만점).', ['이용자 만족도 조사'], [[0, '3.0 미만 또는 미확인 · 0점'], [1, '3.0~3.29 · 1점'], [2, '3.3~3.59 · 2점'], [3, '3.6~3.89 · 3점'], [4, '3.9~4.19 · 4점'], [5, '4.2~4.49 · 5점'], [6, '4.5 이상 · 6점']]),
-        mkT('r', 'now', 0, '최소 참여자 기준', '아동과 보호자의 응답 수가 기준 이상임. 평가편람은 시설 규모별 최소 응답 수를 정하고 있음(예: 이용아동 20~23명 시설은 5명). 미달 시 1점 감점.')
+        mkS('s', 'now', '만족도 평균', '두 집단 평균의 평균을 소수점 첫째 자리로 반올림한 점수(예: 4.45→4.5).', ['이용자 만족도 조사'], [[0, '3.0 미만 또는 미확인 · 0점'], [1, '3.0~3.2 · 1점'], [2, '3.3~3.5 · 2점'], [3, '3.6~3.8 · 3점'], [4, '3.9~4.1 · 4점'], [5, '4.2~4.4 · 5점'], [6, '4.5 이상 · 6점']]),
+        mkT('r', 'now', 0, '최소 참여자 기준', '조사는 아동·보호자 각각 참여가 원칙이나, 감점 판단은 특례에 따라 두 집단 참여자 합산 수로 확인함. 현원별 최소: 20명 미만 4명 / 20~23명 5명 / 24~27명 6명 / 28~31명 7명 / 32~35명 8명 / 36~39명 9명 / 40~43명 10명 / 44~47명 11명 / 48~50명 12명. 합산 미달 시 1점 감점(0점이면 감점 없음).')
       ] },
     { id: '4-1', docs: ['시설장 면담'], area: 'ops', name: '시설장의 운영 철학과 노력', en: '시설장 면담', max: 3, by: '현장평가', conv: function (r) { return r >= 7 ? 3 : r === 6 ? 2 : r === 5 ? 1 : 0; },
       note: '시설장이 질문별로 약 3분간 자료 없이 답변함. 답변 준비 정도를 표시함. 원점수 7~8점은 3점.',
@@ -553,10 +556,10 @@ td.req { min-width: 320px; max-width: 54ch; }
       items: [
         mkG('year', 'zero-year', '해당 연도 월간사업계획서 12개가 연간사업계획서와 별도로, 시간표가 아닌 계획서 형식으로 작성됨.', ['월간사업계획서']),
         mkS('c1', 'year', '① 연간사업계획서의 충실성', '사업목표, 사업내용(내용, 시기, 운영시간, 수행인력), 예산, 평가방법이 모두 작성됨.', ['연간사업계획서']),
-        mkT('c2', 'year', 1, '② 운영위원회 심의', '지자체 승인을 받은 운영위원회가 회의를 개최하여 연간사업계획서를 심의함. 서면 심의는 인정되지 않음.', ['운영위원회 회의록', '운영위원회 승인 공문']),
-        mkS('c3', 'year', '③ 월간사업계획서의 충실성', '사업목표와 사업내용이 작성되고, 2024년부터 예산이 포함됨.', ['월간사업계획서']),
+        mkT('c2', 'year', 1, '② 운영위원회 심의', '지자체 승인을 받은 운영위원회가 회의를 개최하여 연간사업계획서를 심의함. 서면 심의·회의는 원칙적으로 불인정하나, 관련 지자체 공문을 구비한 경우 인정됨.', ['운영위원회 회의록', '운영위원회 승인 공문']),
+        mkS('c3', 'year', '③ 월간사업계획서의 충실성', '사업목표와 세부 사업내용(내용·시기·운영시간·수행인력)이 충실하게 작성되고, 2024년부터 예산이 포함됨.', ['월간사업계획서']),
         mkS('c4', 'year', '④ 연간/월간 사업계획서의 연계성', '월간사업계획서가 연간사업계획서와 일치하며, 차이가 있는 경우 운영위원회 또는 종사자 회의록으로 근거가 확인됨.', ['종사자 회의록', '운영일지']),
-        mkS('c5', 'year', '⑤ 연간사업계획서의 환류', '전년도 사업 평가 결과가 해당 연도 사업계획에 반영됨.', ['연간사업계획서'])
+        mkS('c5', 'year', '⑤ 연간사업계획서의 환류', '표시 연도의 사업 평가 결과가 다음 연도 사업계획에 반영됨: 2023→2024, 2024→2025, 2025→2026.', ['연간사업계획서'])
       ] },
     { id: '4-3', area: 'ops', name: '안전 관리 (준비)', en: '', max: 3, by: '지도점검', conv: sub(1),
       note: '원점수 4점을 3점으로 환산함.',
@@ -573,14 +576,14 @@ td.req { min-width: 320px; max-width: 54ch; }
     { id: '4-5', area: 'ops', name: '종사자 의무교육', en: '', max: 4, by: '지도점검', conv: sub(4),
       note: '해당 연도에 모든 종사자가 이수한 경우에만 표시함. 3개 연도가 모두 표시된 항목만 인정됨. 원점수 8점을 4점으로 환산함.',
       items: [
-        mkT('c1', 'all', 5, '① 의무교육', '해당 연도 지원사업안내에서 정한 의무교육. 원점수 5점.', ['의무교육 이수증']),
+        mkT('c1', 'all', 5, '① 의무교육', '해당 연도 지원사업안내의 운영 주체·교육 시간·내용 기준을 충족한 법정종사자 전원 이수. ②③④ 교육 시간과 중복 인정. 원점수 5점.', ['의무교육 이수증']),
         mkT('c2', 'all', 1, '② 아동학대 신고의무자 교육', '아동학대 신고의무자 교육 이수.', ['의무교육 이수증']),
         mkT('c3', 'all', 1, '③ 긴급복지 신고의무자 교육', '긴급복지지원 신고의무자 교육 이수.', ['의무교육 이수증']),
         mkT('c4', 'all', 1, '④ 개인정보보호 교육', '개인정보보호 교육 이수.', ['의무교육 이수증'])
       ] },
     { id: '4-6', docs: ['보조금 청구·정산보고', '보조금 통장·증빙서류', '예산서'], area: 'ops', name: '회계 관리', en: '', max: 4, by: '지도점검',
       custom: function (g) { return Math.max(0, 4 - 4 * g('p1') - 3 * g('p2') - 2 * g('p3') - g('p4') - 4 * g('p5') - 3 * g('p6') - g('p7')); },
-      note: '4점에서 시작하여 감점만 적용됨. 2023~2025년에 발생한 사항을 표시함. 정산 시 잔액 반납은 환수에 해당하지 않음. 같은 유형이 2건 이상인 경우 실제 감점은 표시된 것보다 큼.',
+      note: '4점에서 시작하여 감점만 적용됨. 2023~2025년에 발생한 사항을 표시함. 정산 시 잔액 반납은 환수에 해당하지 않음. 건당 감점 항목은 건수를 선택함(4건 이상은 이미 0점). 동일 개선명령을 개선 전·후에 중복 입력하지 않음. 2026년 점검에서 개선 확인된 경우도 반영함.',
       items: [
         mkP('p1', 4, '부정 수급으로 보조금 반환', '거짓이나 그 밖의 부정한 방법으로 받은 보조금을 반환함. 4점 감점.'),
         mkP('p2', 3, '보조금 목적 외 사용', '보조금을 목적 외로 사용함. 3점 감점.'),
@@ -591,16 +594,16 @@ td.req { min-width: 320px; max-width: 54ch; }
         mkP('p7', 1, '개선명령, 개선 확인', '개선명령을 받았으나 이후 개선이 확인됨. 건당 1점 감점.')
       ] },
     { id: '4-7', area: 'ops', name: '후원금 관리', en: '', max: 4, by: '지도점검',
-      custom: function (g) { var s = g('s'); if (s === 4) return 4; if (s === 2) return 2; if (s === 1) return (g('c1') && g('c2') && g('c3') && g('c4') && g('c5') && g('c6')) ? 4 : 0; return 0; },
-      note: '먼저 후원금 상황을 선택함. 6개 조건은 후원금 수입이 있는 경우에만 적용되며, 6개를 모두 충족하여야 함.',
+      custom: function (g) { var s = g('s'); if (s === 4) return 4; if (s === 2) return 2; if (s === 1) { var d = [2,1,1,2,1,1].reduce(function (sum, n, i) { var x = g('c' + (i + 1)); return sum + (x === 1 ? 0 : x === 2 ? n : 4); }, 0); return Math.max(0, 4 - d); } return 0; },
+      note: '먼저 후원금 상황을 선택함. 2023~2025년 후원금의 지도점검 결과를 기준으로 6개 항목의 감점을 합산함(최저 0점). 위반 후 개선이 확인되어도 항목별 1~2점 감점은 남음. 사용 항목의 개선 확인 연도는 원문에 2025년으로 표기되어 있어 지자체 확인 필요.',
       items: [
         mkS('s', 'now', '후원금 상황', '센터에 해당하는 상황을 선택함.', ['후원금 전용계좌'], [[0, '미확인'], [1, '후원금 수입 있음'], [2, '후원금 없음, 전용계좌 개설 · 2점'], [3, '후원금 없음, 계좌 미개설 · 0점'], [4, '지자체 또는 운영법인의 후원금 모집 금지(증빙 있음) · 4점']]),
-        mkT('c1', 'now', 0, '① 전용계좌 개설', '시설 명칭이 부기된 시설장 명의의 후원금 전용계좌를 개설함.', ['후원금 전용계좌']),
-        mkT('c2', 'now', 0, '② 후원자 통보', '연 1회 이상 후원금 수입 및 사용 내용을 후원자에게 통보함. 소식지로 갈음할 수 있음.', ['후원금 수입·사용 결과보고']),
-        mkT('c3', 'now', 0, '③ 영수증과 발급대장', '후원금마다 영수증을 발급하고 발급대장을 비치하거나, 국세청과 연계된 희망이음을 사용함.', ['후원금 영수증·발급대장']),
-        mkT('c4', 'now', 0, '④ 결산 보고', '결산 보고 시 후원금 수입 및 사용결과를 함께 보고함.', ['후원금 수입·사용 결과보고']),
-        mkT('c5', 'now', 0, '⑤ 지정후원금 사용', '지정후원금을 지정 용도로만 사용함(관리운영비 15% 이내 제외).'),
-        mkT('c6', 'now', 0, '⑥ 비지정후원금 사용', '비지정후원금 중 간접비 사용 비율이 50%를 넘지 않음.')
+        mkD('c1', '① 전용계좌 개설', '시설 명칭이 부기된 시설장 명의의 후원금 전용계좌를 개설함.', ['후원금 전용계좌'], 2),
+        mkD('c2', '② 후원자 통보', '연 1회 이상 후원금 수입 및 사용 내용을 후원자에게 통보함. 소식지로 갈음할 수 있음.', ['후원금 수입·사용 결과보고'], 1),
+        mkD('c3', '③ 영수증과 발급대장', '영수증과 별도 발급목록을 관리함. 희망이음-국세청 연동분은 인정되지만, 추가 수기 발급분은 별도 발급목록이 반드시 필요함.', ['후원금 영수증·발급대장'], 1),
+        mkD('c4', '④ 결산 보고', '결산 보고 시 후원금 수입 및 사용결과를 함께 보고함.', ['후원금 수입·사용 결과보고'], 2),
+        mkD('c5', '⑤ 지정후원금 사용', '지정후원금을 지정 용도로만 사용함(관리운영비 15% 이내 제외).', [], 1),
+        mkD('c6', '⑥ 비지정후원금 사용', '비지정후원금 중 간접비 사용 비율이 50%를 넘지 않음.', [], 1)
       ] }
   ];
   var ABUSE = [[0, '사례 없음'], [1, '학대 판단 사례(시설 책임) · 15점 감점'], [2, '중대한 학대 사례 · 미통과']];
@@ -618,7 +621,7 @@ td.req { min-width: 320px; max-width: 54ch; }
       if (it.gate) return;
       var m = it.max * it.w, e = 0, mx = m;
       if (it.per === 'now') e = v(keyOf(ind, it)) * it.w;
-      else if (it.per === 'child') { mx = 3 * m; var vw = v(keyOf(ind, it)), vb = Math.max(v(keyOf(ind, it) + '_b'), vw); e = (2 * vb + vw) * it.w; }
+      else if (it.per === 'child') { mx = 3 * m; var k = keyOf(ind, it), vw = v(k), vb = v(k + '_b'); var v2 = v(k + '_b2'); e = (vb + v2 + vw) * it.w; }
       else if (it.per === 'year') { mx = 3 * m; for (y = 0; y < 3; y++) if (ok[y]) e += v(keyOf(ind, it, y)) * it.w; }
       else { var mn = 1; for (y = 0; y < 3; y++) mn = Math.min(mn, v(keyOf(ind, it, y))); e = mn * it.w; }
       if (dead) e = 0;
@@ -642,7 +645,7 @@ td.req { min-width: 320px; max-width: 54ch; }
   var AREA_MAX = { rights: 15, program: 30, child: 30, ops: 25 };
   var AREA_ORDER = ['rights', 'program', 'child', 'ops', 'process'];
   var FREQ = [['daily','매일·상시'],['event','회기·발생 시마다'],['monthly','매월'],['quarterly','분기 1회 이상'],['half','반기 1회 이상'],['yearly','연 1회 이상'],['once','1회 (아동·종사자·프로그램별)'],['current','최신 상태 유지']];
-  var FMT = [['online','전산'],['offline','서면'],['either','전산 또는 서면'],['both','전산 및 서면'],['none','문서 없음']];
+  var FMT = [['online','전산'],['offline','서면'],['either','전산 또는 서면'],['none','문서 없음']];
   var ACT = [['keep','센터 비치'],['submit','제출'],['post','공개 게시'],['none','해당 없음']];
   var SORTS = [['area','영역'],['doc','명칭'],['type','구분'],['form','서식 유형'],['ind','평가지표'],['pts','배점'],['fix','보완 시기'],['gate','필수 조건'],['sco','평가 방식'],['by','확인 방법'],['per','작성 단위'],['freq','작성 주기'],['fmt','관리 방식'],['act','보관·제출'],['where','보관 장소'],['req','필수 기재 항목']];
   var HI = '희망이음';
@@ -667,7 +670,7 @@ td.req { min-width: 320px; max-width: 54ch; }
     '프로그램 평가서': ['standard','매뉴얼 예시, 목표 달성 정도와 환류'], '의견 수렴 기록': ['free','회의록, 자문 기록 등'],
     '아동 참여 기록': ['free','아동의 계획·평가 참여 증빙'], '지역사회 공유 자료': ['free','홈페이지 게시, 홍보물, 행사 등'],
     '돌봄서비스 결정통지서': ['strict','시·군·구 발급, 원본 보관'], '응급처치 및 귀가 동의서': ['strict','법정 서식, 빈칸 없이 작성'],
-    '아동카드': ['strict','희망이음 서식, 출력물 보관'], '서비스 지원기록': ['standard','매뉴얼 예시, 평가 기준 3개 항목'],
+    '아동카드': ['strict','희망이음 서식, 화면 또는 출력물 제시'], '서비스 지원기록': ['standard','매뉴얼 예시, 평가 기준 3개 항목'],
     '관찰일지': ['standard','희망이음 화면 또는 서면, 5개 영역'], '아동상담일지': ['standard','희망이음 화면 또는 같은 항목의 서면'],
     '보호자 상담일지': ['standard','희망이음 화면 또는 같은 항목의 서면'], '연간사업계획서': ['standard','매뉴얼 예시, 평가 기준 항목 포함'],
     '월간사업계획서': ['standard','계획서 형식(시간표 불가), 매뉴얼 예시'], '운영위원회 회의록': ['standard','매뉴얼 예시, 서명부·사진 첨부'],
@@ -725,19 +728,19 @@ td.req { min-width: 320px; max-width: 54ch; }
     {a:'program',i:['2-3'],d:'지역사회 공유 자료',e:'특화프로그램 지역사회 공유 증빙',g:'once',f:'다음 연도까지 1회',m:'either',t:['post','keep'],w:'홈페이지 또는 인쇄물, 사본은 프로그램 파일에 보관',c:'특화프로그램의 홈페이지 게시, 홍보물, 공연, 전시회, 자원봉사자·후원자 참여 등.'},
 
     {a:'child',i:[],d:HI + ' 이용아동 등록',e:'이용아동 등록',g:'once',f:'입소 시, 아동별',m:'online',t:['submit'],w:HI + ', 시·군·구 보고',c:'희망이음에 등록된 아동만 개별 아동 파일 평가 대상이 됨.'},
-    {a:'child',i:['3-1'],d:'돌봄서비스 결정통지서',e:'돌봄서비스 이용 결정',g:'once',f:'입소 시 아동별 1회',m:'offline',t:['keep'],w:LOCK,c:'시·군·구의 센터 이용 결정 통지서. 확인 대상 파일 중 하나라도 없으면 지표 3-1은 0점.'},
-    {a:'child',i:['3-1'],d:'응급처치 및 귀가 동의서',e:'응급처치·귀가 동의',g:'once',f:'입소 시 아동별 1회',m:'offline',t:['keep'],w:LOCK,c:'모든 항목을 빈칸 없이 작성하며, 작성할 수 없는 항목은 사유를 기재함. 확인 대상 파일 중 하나라도 없으면 지표 3-1은 0점.'},
-    {a:'child',i:['3-1'],d:'아동카드',e:'아동 기본 기록',g:'current',f:'입소 시 작성, 성장에 따라 갱신',m:'both',t:['keep'],w:HI + '에서 작성, 출력물은 아동 개별 파일에 보관',c:'성명, 주소, 연락처, 학교, 보호자, 의뢰 배경, 성장 과정, 가족, 욕구와 강점, 서비스 제공 계획.'},
-    {a:'child',i:['3-1'],d:'서비스 지원기록',e:'연간 서비스 지원 현황 및 총평',g:'yearly',f:'연 1회 이상',m:'either',t:['keep'],w:CH,c:'지원한 서비스와 프로그램, 서비스 효과 및 아동의 변화, 다음 연도 계획. 3가지 모두 기록 시 3점.'},
-    {a:'child',i:['3-2'],d:'관찰일지',e:'아동 일상생활 관리',g:'half',f:'반기별 1회 이상',m:'either',t:['keep'],w:CH,c:'학습, 또래관계, 행동이나 정서상의 변화, 건강상의 유의점, 특별한 요구사항. 법정종사자가 작성하고 관찰 기간을 명시함.'},
+    {a:'child',i:['3-1'],d:'돌봄서비스 결정통지서',e:'돌봄서비스 이용 결정',g:'once',f:'입소 시 아동별 1회',m:'offline',t:['keep'],w:LOCK,c:'시·군·구의 센터 이용 결정 통지서. 평가대상 3명의 파일을 확인함. 이 도구는 필수조건 미충족 시 지표 전체를 0점으로 추정하는 보수적 해석을 적용함.'},
+    {a:'child',i:['3-1'],d:'응급처치 및 귀가 동의서',e:'응급처치·귀가 동의',g:'once',f:'입소 시 아동별 1회',m:'offline',t:['keep'],w:LOCK,c:'모든 항목을 빈칸 없이 작성하며, 작성할 수 없는 항목은 사유를 기재함. 평가대상 3명의 파일을 확인함. 이 도구는 필수조건 미충족 시 지표 전체를 0점으로 추정하는 보수적 해석을 적용함.'},
+    {a:'child',i:['3-1'],d:'아동카드',e:'아동 기본 기록',g:'current',f:'입소 시 작성, 성장에 따라 갱신',m:'either',t:['keep'],w:HI + ' 화면 제시 또는 아동 개별 파일에 출력물 보관',c:'성명, 주소, 연락처, 학교, 보호자, 의뢰 배경, 성장 과정, 가족, 욕구와 강점, 서비스 제공 계획.'},
+    {a:'child',i:['3-1'],d:'서비스 지원기록',e:'연간 서비스 지원 현황 및 총평',g:'yearly',f:'연 1회 이상',m:'either',t:['keep'],w:CH,c:'지원한 서비스와 프로그램, 서비스 효과 및 아동의 변화, 다음 연도 계획. 3가지 모두 기록 시 아동 1명당 원점수 3점.'},
+    {a:'child',i:['3-2'],d:'관찰일지',e:'아동 일상생활 관리',g:'half',f:'2023년 연 2회, 2024년부터 반기별 1회 (하반기 입소는 1회)',m:'either',t:['keep'],w:CH,c:'학습, 또래관계, 행동이나 정서상의 변화, 건강상의 유의점, 특별한 요구사항. 법정종사자가 작성하고 관찰 기간을 명시함.'},
     {a:'child',i:['3-3'],d:'아동상담일지',e:'아동 정서 지원 상담',g:'yearly',f:'연 1회 이상',m:'either',t:['keep'],w:CH,c:'일자, 상담 사유, 상담 내용, 상담자 의견, 개입 내용. 법정종사자가 작성함.'},
     {a:'child',i:['3-4'],d:'보호자 상담일지',e:'보호자(연고자) 상담',g:'yearly',f:'연 1회 이상',m:'either',t:['keep'],w:CH,c:'아동상담일지와 같은 항목. 전화상담, 내방상담, 가정방문도 기록하면 인정됨.'},
-    {a:'child',i:['3-5'],d:'이용자 만족도 조사',e:'아동·보호자 온라인 설문',g:'once',f:'평가 연도',m:'online',t:['none'],w:'온라인 만족도 조사',c:'아동과 보호자가 직접 응답함. 평균 4.5점 이상이면 만점이며, 응답 수가 부족하면 1점 감점.'},
+    {a:'child',i:['3-5'],d:'이용자 만족도 조사',e:'아동·보호자 온라인 설문',g:'once',f:'평가 연도',m:'online',t:['none'],w:'온라인 만족도 조사',c:'아동과 보호자가 직접 응답함. 두 집단 평균의 평균을 소수점 첫째 자리로 반올림하여 4.5점 이상이면 만점. 감점 판단 시 참여자 합산 수 특례를 적용함.'},
 
     {a:'ops',i:['4-1'],d:'시설장 면담',e:'현장평가 시설장 면담',g:'once',f:'현장평가 당일',m:'none',t:['none'],w:'현장 답변',c:'운영 비전, 아동의 욕구, 주요 사업의 욕구 반영, 생활복지사 지원에 관한 4개 질문에 자료 없이 답변함.'},
     {a:'ops',i:['4-2'],d:'연간사업계획서',e:'연간 사업 계획',g:'yearly',f:'연 1회',m:'either',t:['keep'],w:CF,c:'사업목표, 세부 사업내용(시기, 운영시간, 수행인력), 예산, 평가방법, 전년도 사업 평가. 운영위원회 심의를 거쳐야 함.'},
     {a:'ops',i:['4-2'],d:'월간사업계획서',e:'월별 사업 계획',g:'monthly',f:'매월, 연 12회',m:'either',t:['keep'],w:CF,c:'사업목표, 사업내용, 예산을 계획서 형식(시간표 불가)으로 작성하며, 연간사업계획서와 일치하여야 함.'},
-    {a:'ops',i:['4-2'],d:'운영위원회 회의록',e:'운영위원회 개최 기록',g:'quarterly',f:'분기 1회 이상',m:'offline',t:['keep','submit'],w:'원본은 센터 비치, 사본 1부는 시·군·구 제출',c:'참석자, 안건, 의결 사항, 참석자 서명부, 사진. 연간사업계획서 심의 내용이 확인되어야 하며, 서면 회의는 인정되지 않음.'},
+    {a:'ops',i:['4-2'],d:'운영위원회 회의록',e:'운영위원회 개최 기록',g:'quarterly',f:'분기 1회 이상',m:'offline',t:['keep','submit'],w:'원본은 센터 비치, 사본 1부는 시·군·구 제출',c:'참석자, 안건, 의결 사항, 참석자 서명부, 사진. 연간사업계획서 심의 내용이 확인되어야 하며, 서면 심의·회의는 관련 지자체 공문을 구비한 경우에 한해 인정됨.'},
     {a:'ops',i:['4-2'],d:'운영위원회 승인 공문',e:'운영위원 승인 통보 공문',g:'once',f:'위원 위촉 시',m:'offline',t:['keep'],w:'센터 파일',c:'지자체의 운영위원회 승인 공문. 없으면 운영위원회 심의 점수가 인정되지 않음.'},
     {a:'ops',i:['4-2'],d:'종사자 회의록',e:'종사자(직원) 회의 기록',g:'event',f:'회의 시마다',m:'either',t:['keep'],w:CF,c:'보조 자료. 월간사업계획서가 연간사업계획서와 다르거나 연중 프로그램이 추가된 경우 특히 필요함.'},
     {a:'ops',i:['4-2'],d:'운영일지',e:'일일 운영 기록',g:'daily',f:'매 운영일',m:'either',t:['keep'],w:CF,c:'이용아동 수, 업무 내용, 특이사항 및 조치 내용. 보조 자료이며 3년간 보관함.'},
@@ -1419,7 +1422,7 @@ td.req { min-width: 320px; max-width: 54ch; }
   var $ = function (id) { return document.getElementById(id); };
 
   /* ---------- scorecard ---------- */
-  var V = {}, NAME = '', ALLOWED = { abuse: [0, 1, 2] }, BEST_OF = {}, WEAK_OF = {};
+  var V = {}, NAME = '', ALLOWED = { abuse: [0, 1, 2] }, BEST_OF = {};
   IND.forEach(function (ind) {
     ind.items.forEach(function (it) {
       var vals = it.kind === 'tick' ? [0, 1] : it.opts.map(function (o) { return o[0]; });
@@ -1427,18 +1430,18 @@ td.req { min-width: 320px; max-width: 54ch; }
       else {
         var wk = keyOf(ind, it);
         ALLOWED[wk] = vals;
-        if (it.per === 'child') { ALLOWED[wk + '_b'] = vals; BEST_OF[wk] = wk + '_b'; WEAK_OF[wk + '_b'] = wk; }
+        if (it.per === 'child') { ALLOWED[wk + '_b'] = vals; ALLOWED[wk + '_b2'] = vals; BEST_OF[wk] = wk + '_b'; }
       }
     });
   });
   function val(k) { return V[k] || 0; }
   function clean(obj) {
     var out = {};
-    if (obj && typeof obj === 'object') Object.keys(ALLOWED).forEach(function (k) { if (ALLOWED[k].indexOf(obj[k]) > 0) out[k] = obj[k]; });
+    if (obj && typeof obj === 'object') Object.keys(ALLOWED).forEach(function (k) { if (ALLOWED[k].indexOf(obj[k]) >= 0) out[k] = obj[k]; });
     return out;
   }
 
-  function normalize(o) { Object.keys(BEST_OF).forEach(function (w) { if ((o[w] || 0) > (o[BEST_OF[w]] || 0)) o[BEST_OF[w]] = o[w]; }); return o; }
+  function normalize(o) { Object.keys(BEST_OF).forEach(function (w) { var b = BEST_OF[w]; if (!(w in o) && !(b in o)) return; if (!(b in o)) o[b] = o[w] || 0; if (!(b + '2' in o)) o[b + '2'] = o[b]; }); return o; }
   function ctlHtml(it, key, cap) {
     var inner, al = ' aria-label="' + esc(it.name + ', ' + cap) + '"';
     if (it.kind === 'tick') inner = '<input type="checkbox" id="c-' + key + '" data-k="' + key + '"' + al + '>';
@@ -1448,13 +1451,14 @@ td.req { min-width: 320px; max-width: 54ch; }
   function itemHtml(ind, it) {
     var ctl = '';
     if (it.per === 'year' || it.per === 'all') for (var y = 0; y < 3; y++) ctl += ctlHtml(it, keyOf(ind, it, y), String(YEARS[y]));
-    else if (it.per === 'child') ctl = ctlHtml(it, keyOf(ind, it) + '_b', '충실한 파일 2개') + ctlHtml(it, keyOf(ind, it), '미흡한 파일 1개');
+    else if (it.per === 'child') ctl = ctlHtml(it, keyOf(ind, it) + '_b', '시설 선정 1') + ctlHtml(it, keyOf(ind, it) + '_b2', '시설 선정 2') + ctlHtml(it, keyOf(ind, it), '평가위원 선정 1');
     else ctl = ctlHtml(it, keyOf(ind, it), it.pen ? '발생' : it.gate ? '충족' : it.kind === 'tick' ? '충족' : '현재');
     var docs = it.docs.length ? '<span class="item-docs">' + it.docs.map(docBtn).join('') + '</span>' : '';
     return '<div class="item' + ((it.per === 'year' || it.per === 'all') ? ' item-years' : '') + (it.gate ? ' gate' : '') + '" id="it-' + ind.id + '_' + it.k + '"><div class="item-text"><span class="item-name">' + esc(it.name) + '</span><span class="item-desc">' + esc(it.desc) + '</span>' + docs + '</div><div class="item-ctl">' + ctl + '</div><div class="item-raw mono" id="ir-' + ind.id + '_' + it.k + '"></div></div>';
   }
+  var GUIDE_PAGE = {'1-1':48,'1-2':50,'2-1':51,'2-2':53,'2-3':55,'3-1':58,'3-2':59,'3-3':60,'3-4':61,'3-5':62,'4-1':63,'4-2':64,'4-3':65,'4-4':66,'4-5':67,'4-6':68,'4-7':69};
   function cardHtml(ind) {
-    return '<article class="ind" id="ind-' + ind.id + '"><header class="ind-head"><span class="mono ind-id">' + ind.id + '</span><div class="ind-title"><h3>' + esc(ind.name) + '</h3><span class="ind-en">' + (ind.en ? esc(ind.en) + ' · ' : '') + '확인 방법: ' + esc(ind.by) + '</span></div><div class="ind-score"><span id="sc-' + ind.id + '">0</span> / ' + ind.max + '<span class="ind-raw" id="rw-' + ind.id + '"></span></div></header><p class="ind-note">' + esc(ind.note) + '</p>' + (ind.docs ? '<div class="ind-docs"><span class="ctl-cap">관련 서류</span>' + ind.docs.map(docBtn).join('') + '</div>' : '') + ind.items.map(function (it) { return itemHtml(ind, it); }).join('') + '</article>';
+    return '<article class="ind" id="ind-' + ind.id + '"><header class="ind-head"><span class="mono ind-id">' + ind.id + '</span><div class="ind-title"><h3>' + esc(ind.name) + '</h3><span class="ind-en">' + (ind.en ? esc(ind.en) + ' · ' : '') + '확인 방법: ' + esc(ind.by) + '</span></div><div class="ind-score"><span id="sc-' + ind.id + '">0</span> / ' + ind.max + '<span class="ind-raw" id="rw-' + ind.id + '"></span></div></header><p class="ind-note">' + esc(ind.note) + ' <a href="' + SRC_URL.h + '#page=' + GUIDE_PAGE[ind.id] + '" target="_blank" rel="noopener">2026 편람 ' + (GUIDE_PAGE[ind.id] - 2) + '쪽</a></p>' + (ind.docs ? '<div class="ind-docs"><span class="ctl-cap">관련 서류</span>' + ind.docs.map(docBtn).join('') + '</div>' : '') + ind.items.map(function (it) { return itemHtml(ind, it); }).join('') + '</article>';
   }
   (function build() {
     var html = '';
@@ -1464,7 +1468,7 @@ td.req { min-width: 320px; max-width: 54ch; }
     });
     html += '<h2 class="area-h" id="ah-abuse"><span class="dot process-bg"></span>감점·강등<span class="area-score">총점에 적용</span></h2>' +
       '<article class="ind" id="ind-abuse"><header class="ind-head"><span class="mono ind-id">—</span><div class="ind-title"><h3>아동학대 사례 발생이력</h3><span class="ind-en">아동학대 사례 · 중앙평가위원회 결정</span></div></header><p class="ind-note">아동학대전담공무원 또는 법원이 학대로 판단한 사례로서 시설의 관리·감독 책임이 명백한 경우 15점 감점함. 중대한 사례는 점수와 관계없이 미통과 처리됨.</p>' +
-      '<div class="item"><div class="item-text"><span class="item-name">평가대상기간 중 학대판단 사례</span><span class="item-desc">평가대상기간부터 현장평가 시점까지 발생한 사례.</span></div><div class="item-ctl"><label class="ctl"><span class="ctl-cap">현재</span><select id="c-abuse" data-k="abuse" aria-label="평가대상기간 중 학대판단 사례">' + ABUSE.map(function (o) { return '<option value="' + o[0] + '">' + esc(o[1]) + '</option>'; }).join('') + '</select></label></div><div class="item-raw"></div></div></article>';
+      '<div class="item"><div class="item-text"><span class="item-name">평가대상기간 중 학대판단 사례</span><span class="item-desc">2023년부터 2026년 발생이력 2차 확인시점까지의 사례판단일 기준. 이전 평가에 이미 반영된 사례는 제외하고 동일 사안은 병합함.</span></div><div class="item-ctl"><label class="ctl"><span class="ctl-cap">현재</span><select id="c-abuse" data-k="abuse" aria-label="평가대상기간 중 학대판단 사례">' + ABUSE.map(function (o) { return '<option value="' + o[0] + '">' + esc(o[1]) + '</option>'; }).join('') + '</select></label></div><div class="item-raw"></div></div></article>';
     $('cards').innerHTML = html;
     $('tiles').innerHTML = ['rights', 'program', 'child', 'ops'].map(function (a) {
       return '<div class="tile-group"><div class="tile-group-head"><span class="dot ' + a + '-bg"></span>' + esc(AREAS[a]) + '<span class="num" id="ta-' + a + '">0 / ' + AREA_MAX[a] + '</span></div><div class="tile-grid">' + IND.filter(function (ind) { return ind.area === a; }).map(function (ind) {
@@ -1526,7 +1530,7 @@ td.req { min-width: 320px; max-width: 54ch; }
   try { var saved = JSON.parse(localStorage.getItem(LKEY) || '{}'); V = normalize(clean(saved.v)); NAME = typeof saved.name === 'string' ? saved.name.slice(0, 80) : ''; } catch (e) {}
   $('center-name').value = NAME;
   function hasPending() { return Object.keys(pending).length > 0 || pendingName !== null; }
-  function overlay(target, src) { if (src) Object.keys(src).forEach(function (k) { if (src[k]) target[k] = src[k]; else delete target[k]; }); }
+  function overlay(target, src) { if (src) Object.keys(src).forEach(function (k) { target[k] = src[k]; }); }
   function applyRemote(d) {
     var nv = clean(d && d.v);
     overlay(nv, inflight); overlay(nv, pending);
@@ -1599,15 +1603,15 @@ td.req { min-width: 320px; max-width: 54ch; }
     } catch (e) { localOnly(); }
   })();
 
-  function put(k, x) { if (x) V[k] = x; else delete V[k]; pending[k] = x; }
+  function put(k, x) { V[k] = x; pending[k] = x; }
   $('cards').addEventListener('change', function (ev) {
     var el = ev.target, k = el && el.dataset ? el.dataset.k : null;
     if (!k || !ALLOWED[k] || readOnly) return;
     var x = el.type === 'checkbox' ? (el.checked ? 1 : 0) : Number(el.value);
     if (ALLOWED[k].indexOf(x) === -1) return;
+    Object.keys(BEST_OF).forEach(function (w) { var b = BEST_OF[w]; if (k === w || k === b || k === b + '2') { put(w, val(w)); put(b, val(b)); put(b + '2', val(b + '2')); } });
     put(k, x);
-    if (BEST_OF[k] && x > val(BEST_OF[k])) { put(BEST_OF[k], x); sync(); }
-    else if (WEAK_OF[k] && x < val(WEAK_OF[k])) { put(WEAK_OF[k], x); sync(); }
+    // Each selected child is independent; never change another child automatically.
     queue(); recompute();
   });
   $('center-name').addEventListener('change', function (ev) { NAME = ev.target.value.slice(0, 80); pendingName = NAME; queue(); });
@@ -1652,9 +1656,9 @@ td.req { min-width: 320px; max-width: 54ch; }
   /* ---------- priority ---------- */
   var CYKEY = 'eval-cur-year';
   (function () {
-    var sel = $('cur-year'), now = new Date().getFullYear(), idx = now > YEARS[2] ? 3 : Math.max(0, YEARS.indexOf(now));
-    sel.innerHTML = YEARS.map(function (y, i) { return '<option value="' + i + '">' + y + '년</option>'; }).join('') + '<option value="3">' + (YEARS[2] + 1) + '년 이후 (평가대상기간 종료)</option>';
-    try { var s = localStorage.getItem(CYKEY); if (s !== null && /^[0-3]$/.test(s)) idx = Number(s); } catch (e) {}
+    var sel = $('cur-year'), now = new Date().getFullYear(), idx = now > 2026 ? 4 : now > YEARS[2] ? 3 : Math.max(0, YEARS.indexOf(now));
+    sel.innerHTML = YEARS.map(function (y, i) { return '<option value="' + i + '">' + y + '년</option>'; }).join('') + '<option value="3">' + (YEARS[2] + 1) + '년 (2025년 환류·공유 확인)</option><option value="4">2027년 이후 (2026년 평가 종료)</option>';
+    try { var s = localStorage.getItem(CYKEY); if (s !== null && /^[0-4]$/.test(s)) idx = Number(s); } catch (e) {}
     sel.value = String(idx);
     sel.addEventListener('change', function () { try { localStorage.setItem(CYKEY, sel.value); } catch (e) {} renderPrio(); });
   })();
@@ -1665,7 +1669,7 @@ td.req { min-width: 320px; max-width: 54ch; }
     IND.forEach(function (ind) {
       var o = {}, s;
       if (ind.id === '4-6') {
-        ind.items.forEach(function (it) { var k = keyOf(ind, it), z = {}; if (val(k)) { z[k] = 0; add(4, ind, it, z, '평가대상기간 중 발생'); } });
+        ind.items.forEach(function (it) { var k = keyOf(ind, it), z = {}; if (val(k)) { if (it.k === 'p6') { z[k] = 0; z['4-6_p7'] = Math.min(4, val('4-6_p7') + val(k)); add(2, ind, it, z, '개선 확인', '지자체가 개선을 확인하면 건당 3점에서 1점 감점으로 줄어듭니다.'); } else { z[k] = 0; add(4, ind, it, z, '평가대상기간 중 발생'); } } });
         return;
       }
       if (ind.id === '4-7') {
@@ -1673,9 +1677,11 @@ td.req { min-width: 320px; max-width: 54ch; }
         if (s === 0) { o['4-7_s'] = 4; add(2, ind, ind.items[0], o, '미확인', '지표별 점검 화면에서 후원금 상황을 선택하십시오. 최대 4점이 달려 있습니다.'); }
         else if (s === 3) { o['4-7_s'] = 2; add(2, ind, ind.items[0], o, '계좌 미개설', '후원금이 없더라도 전용계좌를 개설하면 2점을 받습니다.'); }
         else if (s === 1) {
-          var miss = ind.items.slice(1).filter(function (it) { return !val(keyOf(ind, it)); });
-          miss.forEach(function (it) { o[keyOf(ind, it)] = 1; });
-          miss.forEach(function (it) { add(2, ind, it, o, '현재', '6개 조건을 모두 충족하여야 하며, 표시된 점수는 6개 전체에 대한 점수입니다.'); });
+          ind.items.slice(1).forEach(function (it) {
+            var k = keyOf(ind, it), z = {};
+            if (!val(k)) { z[k] = 2; add(2, ind, it, z, '개선 확인', '개선 증빙을 확인받아야 하며, 개선 후에도 잔여 감점이 있습니다.'); }
+            else if (val(k) === 2) { z[k] = 1; add(4, ind, it, z, '위반 후 잔여 감점', '개선으로 과거 위반 사실이 없어지지는 않습니다.'); }
+          });
         }
         return;
       }
@@ -1689,15 +1695,15 @@ td.req { min-width: 320px; max-width: 54ch; }
         if (it.per === 'year' || it.per === 'all') {
           var past = {}, open = {}, py = [], oy = [];
           for (y = 0; y < 3; y++) if (val(keyOf(ind, it, y)) < it.max) {
-            if (y < cy) { past[keyOf(ind, it, y)] = it.max; py.push(YEARS[y]); } else { open[keyOf(ind, it, y)] = it.max; oy.push(YEARS[y]); }
+            if (y + (((ind.id === '2-1' || ind.id === '2-2') && it.k === 'c6') || (ind.id === '4-2' && it.k === 'c5') ? 1 : 0) < cy) { past[keyOf(ind, it, y)] = it.max; py.push(YEARS[y]); } else { open[keyOf(ind, it, y)] = it.max; oy.push(YEARS[y]); }
           }
           if (oy.length) add(1, ind, it, open, oy.join('·') + '년');
           if (py.length) add(4, ind, it, past, py.join('·') + '년');
         } else if (it.per === 'child') {
-          if (val(k) < it.max || val(k + '_b') < it.max) { z[k] = it.max; z[k + '_b'] = it.max; add(it.kind === 'tick' ? 2 : 3, ind, it, z, val(k + '_b') >= it.max ? '미흡한 파일' : '파일 3개 모두'); }
+          if (val(k) < it.max || val(k + '_b') < it.max || val(k + '_b2') < it.max) { z[k] = it.max; z[k + '_b'] = it.max; z[k + '_b2'] = it.max; add(ind.id === '3-1' && it.k === 'c1' ? 3 : (cy > 2 ? 4 : 1), ind, it, z, '평가대상 파일 3개'); }
         } else if (val(k) < it.max) {
           z[k] = it.max;
-          add(ind.timebound ? (cy > 2 ? 4 : 1) : (it.kind === 'tick' ? 2 : 3), ind, it, z, ind.timebound ? '평가대상기간 전체' : '현재');
+          add(ind.id === '2-3' && it.k === 'c7' && cy === 3 ? 1 : ind.timebound ? (cy > 2 ? 4 : 1) : (it.kind === 'tick' ? 2 : 3), ind, it, z, ind.id === '2-3' && it.k === 'c7' && cy === 3 ? '2025년 프로그램만: 2026년 현장평가 전 공유' : ind.timebound ? '평가대상기간 전체' : '현재');
         }
       });
     });
@@ -1705,8 +1711,8 @@ td.req { min-width: 320px; max-width: 54ch; }
     return out;
   }
   var TIERS = [
-    [1, '기한 내 작성', '아직 진행 중인 연도의 기록입니다. 해당 연도가 지나면 보완할 수 없으므로 가장 먼저 처리합니다.'],
-    [2, '즉시 보완: 충족 여부 항목', '평가 당일의 상태로 확인하며 충족 또는 미충족으로 평가합니다. 가장 적은 노력으로 점수를 올릴 수 있는 항목입니다.'],
+    [1, '기한 내 작성', '해당 연도의 기록 또는 다음 연도에 확인하는 환류입니다. 2025년 평가 결과의 2026년 계획 반영을 포함합니다. 이미 지난 기록은 소급 작성하지 마십시오.'],
+    [2, '즉시 보완: 충족 여부 항목', '현장평가·지도점검 시점의 충족 여부 또는 지자체의 개선 확인을 반영합니다. 개선 후에도 잔여 감점이 있을 수 있습니다.'],
     [3, '수준 향상: 수준 평가 항목', '충실성과 구체성에 따라 평가합니다. 보완하려면 재작성이나 준비 시간이 필요합니다.'],
     [4, '보완 불가', '지난 연도, 감점 사항, 확정된 사례입니다. 이를 감안하여 계획하되, 기록을 소급하여 작성하지 마십시오.']
   ];
@@ -1718,7 +1724,7 @@ td.req { min-width: 320px; max-width: 54ch; }
     });
     var reach = scoreWith(fixable);
     $('reach').textContent = reach;
-    $('reach-line').textContent = '현재 점수는 ' + cur.total + '점입니다. 1~3단계 항목을 모두 만점으로 보완하면 ' + reach + '점이 되며, ' + (100 - reach) + '점은 보완할 수 없습니다.' + (cur.fail ? ' 중대한 학대 사례가 있어 점수와 관계없이 미통과 처리됩니다.' : '');
+    $('reach-line').textContent = '현재 점수는 ' + cur.total + '점입니다. 1~3단계의 보완·개선 확인을 모두 반영하면 ' + reach + '점이 되며, ' + (100 - reach) + '점은 현재 가정에서 회복되지 않습니다. 미확인 사실·평가위원 판단에 따라 달라질 수 있습니다.' + (cur.fail ? ' 중대한 학대 사례가 있어 점수와 관계없이 미통과 처리됩니다.' : '');
     TIERS.forEach(function (t) {
       var rows = list.filter(function (e) { return e.tier === t[0]; }), all = {};
       rows.forEach(function (e) { Object.keys(e.keys).forEach(function (k) { all[k] = e.keys[k]; }); });
