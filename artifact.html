@@ -96,6 +96,10 @@ input:disabled, select:disabled { cursor: not-allowed; opacity: 0.6; }
 .ind-docs { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; padding: 0 16px 10px; }
 .only-banner { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; font-size: 14px; }
 .item { display: grid; grid-template-columns: minmax(0, 1fr) auto 64px; gap: 8px 18px; align-items: start; padding: 10px 16px; border-top: 1px solid var(--line); }
+.item.item-years { grid-template-columns: minmax(0, 1fr) 360px 64px; }
+.item-years .item-ctl { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+.item-years .ctl { min-width: 0; align-items: center; }
+.item-years .ctl select { width: 100%; min-width: 0; padding-inline: 6px; }
 .item.gate { background: var(--surface-2); }
 .item-text { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
 .item-name { font-weight: 600; font-size: 14px; }
@@ -237,9 +241,9 @@ td.req { min-width: 320px; max-width: 54ch; }
 @media (max-width: 820px) {
   .page { padding-inline: 16px; }
   .calc { grid-template-columns: minmax(0, 1fr); }
-  .item { grid-template-columns: minmax(0, 1fr); }
+  .item, .item.item-years { grid-template-columns: minmax(0, 1fr); }
   .item-ctl { justify-content: flex-start; gap: 8px; }
-  .ctl-y select { width: 104px; padding: 0 6px; }
+  .item-years .item-ctl { width: 100%; gap: 8px; }
   .item-raw { text-align: left; padding-top: 0; }
   #doc-table, #doc-table[data-cols] { min-width: 0; }
   .table-wrap { max-height: none; overflow: visible; }
@@ -1440,7 +1444,7 @@ td.req { min-width: 320px; max-width: 54ch; }
     else if (it.per === 'child') ctl = ctlHtml(it, keyOf(ind, it) + '_b', '충실한 파일 2개') + ctlHtml(it, keyOf(ind, it), '미흡한 파일 1개');
     else ctl = ctlHtml(it, keyOf(ind, it), it.pen ? '발생' : it.gate ? '충족' : it.kind === 'tick' ? '충족' : '현재');
     var docs = it.docs.length ? '<span class="item-docs">' + it.docs.map(docBtn).join('') + '</span>' : '';
-    return '<div class="item' + (it.gate ? ' gate' : '') + '" id="it-' + ind.id + '_' + it.k + '"><div class="item-text"><span class="item-name">' + esc(it.name) + '</span><span class="item-desc">' + esc(it.desc) + '</span>' + docs + '</div><div class="item-ctl">' + ctl + '</div><div class="item-raw mono" id="ir-' + ind.id + '_' + it.k + '"></div></div>';
+    return '<div class="item' + ((it.per === 'year' || it.per === 'all') ? ' item-years' : '') + (it.gate ? ' gate' : '') + '" id="it-' + ind.id + '_' + it.k + '"><div class="item-text"><span class="item-name">' + esc(it.name) + '</span><span class="item-desc">' + esc(it.desc) + '</span>' + docs + '</div><div class="item-ctl">' + ctl + '</div><div class="item-raw mono" id="ir-' + ind.id + '_' + it.k + '"></div></div>';
   }
   function cardHtml(ind) {
     return '<article class="ind" id="ind-' + ind.id + '"><header class="ind-head"><span class="mono ind-id">' + ind.id + '</span><div class="ind-title"><h3>' + esc(ind.name) + '</h3><span class="ind-en">' + (ind.en ? esc(ind.en) + ' · ' : '') + '확인 방법: ' + esc(ind.by) + '</span></div><div class="ind-score"><span id="sc-' + ind.id + '">0</span> / ' + ind.max + '<span class="ind-raw" id="rw-' + ind.id + '"></span></div></header><p class="ind-note">' + esc(ind.note) + '</p>' + (ind.docs ? '<div class="ind-docs"><span class="ctl-cap">관련 서류</span>' + ind.docs.map(docBtn).join('') + '</div>' : '') + ind.items.map(function (it) { return itemHtml(ind, it); }).join('') + '</article>';
