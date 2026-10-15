@@ -1706,7 +1706,12 @@ td.req { min-width: 320px; max-width: 54ch; }
 
   $('doc-table').dataset.cols = $('cols').value;
   sync(); recompute(); render();
-  if (location.hash === '#documents') showView('docs'); else if (location.hash === '#priority') showView('prio');
-  else if (location.hash.indexOf('#form=') === 0) { var fname = ''; try { fname = decodeURIComponent(location.hash.slice(6)); } catch (e) {} if (!openForm(fname)) showView('docs'); }
+  function route() {
+    var h = location.hash;
+    if (h === '#documents') showView('docs'); else if (h === '#priority') showView('prio'); else if (h === '#scorecard') showView('score');
+    else if (h.indexOf('#form=') === 0) { var fname = ''; try { fname = decodeURIComponent(h.slice(6)); } catch (e) {} if (!openForm(fname)) showView('docs'); }
+  }
+  route();
+  window.addEventListener('hashchange', route);
 })();
 </script>
